@@ -1,0 +1,33 @@
+#login-panel {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 9999;
+}
+
+#login-panel form {
+    margin-bottom: 10px;
+    display: none;
+}
+
+
+#register-panel {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 9999;
+}
+
+#register-panel form {
+    margin-bottom: 10px;
+    display: none;
+}
+
