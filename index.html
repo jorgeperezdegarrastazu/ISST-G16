@@ -8,7 +8,7 @@
 
     <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
+    
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/templatemo.css">
     <link rel="stylesheet" href="assets/css/custom.css">
@@ -78,14 +78,11 @@
                             </div>
                         </div>
                     </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#" onclick="toggleLoginPanel()">
+                    <a class="nav-icon position-relative text-decoration-none" href="#"  data-bs-toggle="modal" data-bs-target="#templatemo_search"> <!--onclick="toggleLoginPanel()""-->
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>   -->
                     </a>
@@ -95,28 +92,6 @@
         </div>
     </nav>
     <!-- Header -->
-
-    <!-- Panel de inicio de sesión y registro -->
-    <div id="register-panel" style="display: none;">
-        <!-- Formulario de registro (visible por defecto) -->
-        <form id="register-form" action="registro.php" method="post">
-            <input type="text" name="nombre" placeholder="Nombre completo" required>
-            <input type="text" name="username" placeholder="Nombre de usuario" required>
-            <input type="password" name="password" placeholder="Contraseña" required>
-            <button type="submit">Registrarse</button>
-        </form>
-    
-        <!-- Enlace para ir al formulario de inicio de sesión -->
-        <p>¿Ya tienes una cuenta? <a href="#" onclick="showLoginForm()">Inicia sesión aquí</a></p>
-    </div>
-    <div id="login-panel" style="display: none;"></div>
-        <!-- Formulario de inicio de sesión (inicialmente oculto) -->
-        <form id="login-form" action="login.php" method="post" style="display: none;">
-            <input type="text" name="username" placeholder="Nombre de usuario" required>
-            <input type="password" name="password" placeholder="Contraseña" required>
-            <button type="submit">Iniciar Sesión</button>
-        </form>
-    </div>
     
 
 
@@ -126,14 +101,32 @@
             <div class="w-100 pt-1 mb-5 text-right">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
-                    </button>
-                </div>
-            </form>
+            <div id="register-panel" style="display: block;">
+                <!-- Formulario de registro (visible por defecto) -->
+                <form id="register-form" action="javascript:void(0)" onsubmit="handleRegistration(event)" method="post">
+                    <!-- Campos del formulario -->
+                    <input class="modal-content modal-body border-0 p-0" type="text" name="nombre" placeholder="Nombre" required>
+                    <input class="modal-content modal-body border-0 p-0" form-control type="text" name="apellido" placeholder="Apellido" required>
+                    <input class="modal-content modal-body border-0 p-0"  class="modal-content modal-body border-0 p-0" type="text" name="peso" placeholder="Peso" required>
+                    <input  class="modal-content modal-body border-0 p-0" type="text" name="altura" placeholder="Altura en cm" required>
+                    <input  class="modal-content modal-body border-0 p-0" type="text" name="edad" placeholder="Edad" required>
+                    <input  class="modal-content modal-body border-0 p-0" type="text" name="email" placeholder="Correo electrónico" required>
+                    <input  class="modal-content modal-body border-0 p-0" type="text" name="username" placeholder="Nombre de usuario" required>
+                    <input class="modal-content modal-body border-0 p-0" type="password" name="password" placeholder="Contraseña" required>
+                    <button class="modal-content modal-body border-0 p-0" type="submit">Registrarse</button>
+                </form>
+            
+                <!-- Enlace para ir al formulario de inicio de sesión -->
+                <p>¿Ya tienes una cuenta? Inicia sesión</a></p>
+            </div>
+            <div id="login-panel" style="display: block;"></div>
+                <!-- Formulario de inicio de sesión (inicialmente oculto) -->
+                <form id="login-form" action="javascript:void(0)" onsubmit="handleLogin(event)" method="post">
+                    <input class="modal-content modal-body border-0 p-0" type="text" name="username" placeholder="Nombre de usuario" required>
+                    <input class="modal-content modal-body border-0 p-0" type="password" name="password" placeholder="Contraseña" required>
+                    <button class="modal-content modal-body border-0 p-0" type="submit-login">Iniciar Sesión</button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -309,14 +302,22 @@
     </footer>
     <!-- Footer -->
 
-    <!-- Script -->
+    <!-- Scripts de jQuery y Bootstrap -->
     <script src="assets/js/jquery-1.11.0.min.js"></script>
     <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Otros scripts relacionados con la plantilla y personalizados -->
     <script src="assets/js/templatemo.js"></script>
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/formulario.js"></script>
-    <!-- Script -->
+
+    <!-- Script de SQL.js -->
+    <script src="assets/lib/sql.js"></script>
+
+    <!-- Script de tu registro.js -->
+    <script src="assets/sql/registro.js"></script>
+
 </body>
 
 </html>

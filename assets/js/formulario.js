@@ -16,6 +16,6 @@ function showLoginForm() {
     var registerPanel = document.getElementById('register-panel');
     var loginForm = document.getElementById('login-form');
     
-    registerPanel.style.display = 'none';
+    registerPanel.style.display = 'block';
     loginForm.style.display = 'block';
 }
