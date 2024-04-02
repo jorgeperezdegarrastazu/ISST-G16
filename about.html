@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <!-- Start Top Nav -->
+    <!-- Barra Navegación -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
         <div class="container text-light">
             <div class="w-100 d-flex justify-content-between">
@@ -38,7 +38,7 @@
             </div>
         </div>
     </nav>
-    <!-- Close Top Nav -->
+    <!-- Barra Navegación -->
 
 
     <!-- Header -->
@@ -86,16 +86,38 @@
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="#" onclick="toggleLoginPanel()">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                        <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>   -->
                     </a>
                 </div>
             </div>
 
         </div>
     </nav>
-    <!-- Close Header -->
+    <!-- Header -->
+
+    <!-- Panel de inicio de sesión y registro -->
+    <div id="register-panel" style="display: none;">
+        <!-- Formulario de registro (visible por defecto) -->
+        <form id="register-form" action="registro.php" method="post">
+            <input type="text" name="nombre" placeholder="Nombre completo" required>
+            <input type="text" name="username" placeholder="Nombre de usuario" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Registrarse</button>
+        </form>
+    
+        <!-- Enlace para ir al formulario de inicio de sesión -->
+        <p>¿Ya tienes una cuenta? <a href="#" onclick="showLoginForm()">Inicia sesión aquí</a></p>
+    </div>
+    <div id="login-panel" style="display: none;"></div>
+        <!-- Formulario de inicio de sesión (inicialmente oculto) -->
+        <form id="login-form" action="login.php" method="post" style="display: none;">
+            <input type="text" name="username" placeholder="Nombre de usuario" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -175,7 +197,7 @@
     <!-- End Section -->
 
     
-<!-- Start Footer -->
+<!-- Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
         <div class="container">
             <div class="row">
@@ -235,15 +257,16 @@
         </div>
 
     </footer>
-    <!-- End Footer -->
+    <!-- Footer -->
 
-    <!-- Start Script -->
+    <!-- Script -->
     <script src="assets/js/jquery-1.11.0.min.js"></script>
     <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/templatemo.js"></script>
     <script src="assets/js/custom.js"></script>
-    <!-- End Script -->
+    <script src="assets/js/formulario.js"></script>
+    <!-- Script -->
 </body>
 
 </html>
