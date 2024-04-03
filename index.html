@@ -5,9 +5,8 @@
     <title>NutriApp</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    
     
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/templatemo.css">
@@ -313,7 +312,31 @@
     <script src="assets/js/formulario.js"></script>
 
     <!-- Script de SQL.js -->
+    <script type="module">
+        import { openDB, deleteDB, wrap, unwrap } from 'https://cdn.jsdelivr.net/npm/idb@8/+esm';
+      
+        async function doDatabaseStuff() {
+          const db = await openDB('usuarios.db');
+        }
+      </script>
     <script src="assets/lib/sql.js"></script>
+    <script>
+        const dbName = 'usuarios.db';
+        let db;
+        
+        const request = indexedDB.open(dbName);
+        
+        request.onsuccess = (event) => {
+          db = event.target.result;
+          console.log('Database opened successfully!');
+        };
+        
+        request.onerror = (event) => {
+          console.error('Error opening database:', event.target.error);
+        };
+        
+        // Your code that uses the database can go here
+        </script>
 
     <!-- Script de tu registro.js -->
     <script src="assets/sql/registro.js"></script>

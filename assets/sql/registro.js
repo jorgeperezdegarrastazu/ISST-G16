@@ -1,48 +1,48 @@
-// Crear una conexión global a la base de datos
-const db = new SQL.Database('usuarios.db');
-db.open('usuarios')
-  .then(() => {
-    console.log("Conexión a la base de datos establecida correctamente");
-  })
-  .catch(err => {
-    console.error("Error al abrir la base de datos:", err);
-  });
-
-function handleRegistration(event) {
-  event.preventDefault(); // Prevent default form submission
+// Function to handle registration form submission
+async function handleRegistration(event) {
+  event.preventDefault();
 
   const registro = document.getElementById('register-form');
   const formData = new FormData(registro);
-  
+
   const nombre = formData.get('nombre');
   const apellido = formData.get('apellido');
   const peso = formData.get('peso');
   const altura = formData.get('altura');
   const edad = formData.get('edad');
-  const email = formData.get('email'); // Arreglado typo en 'email'
+  const email = formData.get('email');
   const username = formData.get('username');
   const password = formData.get('password');
-  
-  // Prepare the INSERT query (consider using prepared statements)
-  const query = `INSERT INTO usuarios (nombre, apellido, peso, altura, edad, email, username, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
-  const stmt = db.prepare(query);
 
-  // Execute the query with form data
-  stmt.run([nombre, apellido, peso, altura, edad, email, username, password])
-    .then(() => {
-      console.log("Usuario registrado exitosamente!");
-      // Show success message to the user (optional)
-      alert("¡Registro exitoso! Gracias por unirte a NutriApp");
-    })
-    .catch(err => {
-      console.error("Error inserting data:", err);
-      // Show error message to the user (optional)
-      alert("Ha ocurrido un error al registrarse. Intente nuevamente más tarde.");
-    });
+  try {
+    const request = indexedDB.open('usuarios', 1); // Version 1 or create
+    const db = await request;
+    const tx = db.transaction('usuarios', 'readwrite'); // Create transaction
+    const store = tx.objectStore('usuarios'); // Access object store
+
+    await store.add({
+      nombre,
+      apellido,
+      peso,
+      altura,
+      edad,
+      email,
+      username,
+      password
+    }); // Add user data to object store
+
+    console.log("Usuario registrado exitosamente!");
+    alert("¡Registro exitoso! Gracias por unirte a NutriApp");
+  } catch (err) {
+    console.error("Error registering user:", err);
+    alert("Ha ocurrido un error al registrarse. Intente nuevamente más tarde.");
+  }
 }
 
-function handleLogin(event) {
-  event.preventDefault(); // Prevent default form submission
+
+
+async function handleLogin(event) {
+  event.preventDefault();
 
   const login = document.getElementById('login-form');
   const formData = new FormData(login);
@@ -50,27 +50,39 @@ function handleLogin(event) {
   const username = formData.get('username');
   const password = formData.get('password');
 
-  // Prepare the SELECT query
-  const query = `SELECT * FROM usuarios WHERE username = ? AND password = ?`;
-  const stmt = db.prepare(query);
+  try {
+    // Abrir la base de datos
+    const request = indexedDB.open('usuarios', 1);
+    const db = await request;
 
-  // Execute the query with form data
-  stmt.get([username, password])
-    .then((user) => {
-      if (user) {
-        console.log("Inicio de sesión exitoso!");
-        // Show success message and redirect to the home page (optional)
-        alert("¡Inicio de sesión exitoso!");
-        window.location.href = "index.html";
-      } else {
-        console.error("Credenciales incorrectas");
-        // Show error message to the user (optional)
-        alert("Las credenciales introducidas son incorrectas. Intente nuevamente.");
+
+    let foundUser = null;
+    for (const key in db) {
+      if (key !== 'version' && key !== 'name') { // Evitar propiedades internas
+        const user = await db.get(key);
+        if (user && user.username === username && user.password === password) {
+          foundUser = user;
+          break;
+        }
       }
-    })
-    .catch(err => {
-      console.error("Error al iniciar sesión:", err);
-      // Handle database error (optional)
-      alert("Ha ocurrido un error al iniciar sesión. Intente nuevamente más tarde.");
-    });
+    }
+
+    if (foundUser) {
+      // Inicio de sesión exitoso
+      console.log("Inicio de sesión exitoso!");
+      alert("¡Inicio de sesión exitoso!");
+      window.location.href = "index.html";
+    } else {
+      // Credenciales incorrectas
+      console.error("Credenciales incorrectas");
+      alert("Las credenciales introducidas son incorrectas. Intente nuevamente.");
+    }
+  } catch (err) {
+    // Error al iniciar sesión
+    console.error("Error al iniciar sesión:", err);
+    alert("Ha ocurrido un error al iniciar sesión. Intente nuevamente más tarde.");
+  } finally {
+    // Cerrar la conexión a la base de datos (opcional)
+    db.close();
+  }
 }
