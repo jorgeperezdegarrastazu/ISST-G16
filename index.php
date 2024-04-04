@@ -102,16 +102,16 @@
             </div>
             <div id="register-panel" style="display: block;">
                 <!-- Formulario de registro (visible por defecto) -->
-                <form id="register-form" action="javascript:void(0)" onsubmit="handleRegistration(event)" method="post">
+                <form id="register-form" action="php/registro.php" method="POST">
                     <!-- Campos del formulario -->
-                    <input class="modal-content modal-body border-0 p-0" type="text" name="nombre" placeholder="Nombre" required>
-                    <input class="modal-content modal-body border-0 p-0" form-control type="text" name="apellido" placeholder="Apellido" required>
-                    <input class="modal-content modal-body border-0 p-0"  class="modal-content modal-body border-0 p-0" type="text" name="peso" placeholder="Peso" required>
-                    <input  class="modal-content modal-body border-0 p-0" type="text" name="altura" placeholder="Altura en cm" required>
-                    <input  class="modal-content modal-body border-0 p-0" type="text" name="edad" placeholder="Edad" required>
-                    <input  class="modal-content modal-body border-0 p-0" type="text" name="email" placeholder="Correo electrónico" required>
-                    <input  class="modal-content modal-body border-0 p-0" type="text" name="username" placeholder="Nombre de usuario" required>
-                    <input class="modal-content modal-body border-0 p-0" type="password" name="password" placeholder="Contraseña" required>
+                    <input class="modal-content modal-body border-0 p-0" type="text" name="nombre" placeholder="Nombre" >
+                    <input class="modal-content modal-body border-0 p-0" form-control type="text" name="apellido" placeholder="Apellido" >
+                    <input class="modal-content modal-body border-0 p-0"   type="number" name="peso" placeholder="Peso" >
+                    <input  class="modal-content modal-body border-0 p-0" type="number" name="altura" placeholder="Altura en cm" >
+                    <input  class="modal-content modal-body border-0 p-0" type="number" name="edad" placeholder="Edad" >
+                    <input  class="modal-content modal-body border-0 p-0" type="email" name="email" placeholder="Correo electrónico" >
+                    <input  class="modal-content modal-body border-0 p-0" type="text" name="username" placeholder="Nombre de usuario" >
+                    <input class="modal-content modal-body border-0 p-0" type="password" name="contrasena" placeholder="Contraseña" >
                     <button class="modal-content modal-body border-0 p-0" type="submit">Registrarse</button>
                 </form>
             
@@ -120,9 +120,9 @@
             </div>
             <div id="login-panel" style="display: block;"></div>
                 <!-- Formulario de inicio de sesión (inicialmente oculto) -->
-                <form id="login-form" action="javascript:void(0)" onsubmit="handleLogin(event)" method="post">
-                    <input class="modal-content modal-body border-0 p-0" type="text" name="username" placeholder="Nombre de usuario" required>
-                    <input class="modal-content modal-body border-0 p-0" type="password" name="password" placeholder="Contraseña" required>
+                <form id="login-form" action="php/login.php" method="POST">
+                    <input class="modal-content modal-body border-0 p-0" type="text" name="username" placeholder="Nombre de usuario" >
+                    <input class="modal-content modal-body border-0 p-0" type="password" name="password" placeholder="Contraseña" >
                     <button class="modal-content modal-body border-0 p-0" type="submit-login">Iniciar Sesión</button>
                 </form>
             </div>
@@ -312,31 +312,33 @@
     <script src="assets/js/formulario.js"></script>
 
     <!-- Script de SQL.js -->
-    <script type="module">
+    <!-- <script type="module">
         import { openDB, deleteDB, wrap, unwrap } from 'https://cdn.jsdelivr.net/npm/idb@8/+esm';
       
         async function doDatabaseStuff() {
           const db = await openDB('usuarios.db');
         }
-      </script>
-    <script src="assets/lib/sql.js"></script>
+    </script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/sql-asm.js" integrity="sha512-iM0uXI4U8SuJdfzy3KTUp4umkH+XweQr7LcShsvKILNh38n22rPzQrmigVBO1Kywp00iVsLQ1MAI+nPy2dSoJw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
     <script>
-        const dbName = 'usuarios.db';
-        let db;
-        
-        const request = indexedDB.open(dbName);
-        
-        request.onsuccess = (event) => {
-          db = event.target.result;
-          console.log('Database opened successfully!');
-        };
-        
-        request.onerror = (event) => {
-          console.error('Error opening database:', event.target.error);
-        };
-        
-        // Your code that uses the database can go here
-        </script>
+        async function openDatabase() {
+          try {
+            const db = new SQL.Database();
+            await db.open('usuarios.db');
+            console.log('Database opened successfully!');
+
+          } catch (error) {
+            console.error('Error opening database:', error);
+          }
+        }
+        openDatabase();
+        </script> -->
+
+        <!-- <script>
+            const sqlite3 = require('sqlite3').verbose();
+            const db = new sqlite3.Database('database.db');
+        </script> -->
 
     <!-- Script de tu registro.js -->
     <script src="assets/sql/registro.js"></script>
