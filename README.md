@@ -5,6 +5,17 @@ La misión de este trabajo es desarrolar un aplicación útil para cualquier per
 Pondremos a su disposición dietas y ejercicios recomendados, retos mensuales y una IA que le ayudará en cualquier momento.
 
 
+######  IMPORTANTE  ##############################################################
+Es necesario instalar XAMPP 8.2.4-0 (https://sourceforge.net/projects/xampp/files/). Basta con seguir los pasos e instalarlo como una aplicación común. 
+
+1)  Al abrirla, nos vamos a "Manage Servers" e iniciamos todo.
+2)  Movemos nuestra carpeta del proyecto a XAMPP/htdocs. En mac, XAMPP se encuentra en la carpeta de Aplicaciones.
+3)  Abrimos el navegador y escribimos localhost/phpmyadmin, hay deberás crear una BBDD de nombre "usuarios" y nombre de la tabla "usuarios_db".
+4)  Ya podrás acceder a la página mediante un servidor local escribiendo en el buscador http://localhost/ISST-G16
+######  IMPORTANTE  ##############################################################
+
+
+
 La página antes del registro de usuario se dividirá en:
 
 ################ HOME ################################################
