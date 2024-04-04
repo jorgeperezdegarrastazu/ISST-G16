@@ -9,27 +9,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contrasena = $_POST['contrasena'];
 
     // Consulta SQL para seleccionar el usuario de la base de datos
-    $sql = "SELECT * FROM usuarios_db WHERE username='$username'";
+    $sql = "SELECT * FROM usuarios_db WHERE username='$username' and contrasena='$contrasena'";
 
-    // Ejecutar la consulta
-    $resultado = mysqli_query($conexion, $sql);
-
-    // Verificar si se encontró un usuario con el nombre de usuario proporcionado
-    if ($resultado && mysqli_num_rows($resultado) > 0) {
-        $fila = mysqli_fetch_assoc($resultado);
-        // Verificar la contraseña utilizando password_verify
-        if (password_verify($contrasena, $fila['contrasena'])) {
-            echo "Inicio de sesión exitoso. ¡Bienvenido, $username!";
-        } else {
-            echo "Contraseña incorrecta.";
-        }
-    } else {
-        echo "Nombre de usuario no encontrado.";
+    if (mysqli_num_rows(mysqli_query($conexion, $sql)) > 0){
+        echo '
+            <script>
+                 alert("Usuario creado");
+                 window.location = "../index_usuario.php";
+            </script>
+         ';
+    }else{
+        echo '
+             <script>
+                 alert("ERROR MANIN");
+                 window.location = "../index_usuario.php";
+             </script>
+         ';
     }
 
-    // Liberar el resultado y cerrar la conexión
-    mysqli_free_result($resultado);
-    mysqli_close($conexion);
+    // // Ejecutar la consulta
+    // $resultado = mysqli_query($conexion, $sql);
+
+    // // Verificar si se encontró un usuario con el nombre de usuario proporcionado
+    // if ($resultado && mysqli_num_rows($resultado) > 0) {
+    //     $fila = mysqli_fetch_assoc($resultado);
+    //     // Verificar la contraseña utilizando password_verify
+    //     if (password_verify($contrasena, $fila['contrasena'])) {
+    //         echo "Inicio de sesión exitoso. ¡Bienvenido, $username!";
+    //     } else {
+    //         echo "Contraseña incorrecta.";
+    //     }
+    // } else {
+    //     echo "Nombre de usuario no encontrado.";
+    // }
+
+    // // Liberar el resultado y cerrar la conexión
+    // mysqli_free_result($resultado);
+    // mysqli_close($conexion);
 }
 
 

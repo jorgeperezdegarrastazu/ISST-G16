@@ -13,3 +13,13 @@
 #registrate{
     color:aquamarine;
 }
+
+#nuevas-calorias {
+    width: 150px;
+    margin-right: 10px;
+  }
+  
+#agregar-calorias {
+    background-color: rgb(110, 169, 116);
+    color: #fff;
+}

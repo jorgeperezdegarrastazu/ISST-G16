@@ -33,9 +33,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Ejecutar la consulta
     if (mysqli_query($conexion, $sql)) {
-        echo "Registro exitoso. ¡Bienvenido, $name!";
+        echo '
+            <script>
+                 alert("Registro exitoso. ¡Bienvenido, $nombre!");
+                 window.location = "../index_usuario.php";
+            </script>
+         ';
     } else {
-        echo "Error al registrar usuario: " . mysqli_error($conexion);
+        echo '
+            <script>
+                 alert("Error en el registro");
+                 window.location = "../index.php";
+            </script>
+         ';
     }
 
     // Cerrar la conexión

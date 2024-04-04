@@ -16,7 +16,7 @@ Es necesario instalar XAMPP 8.2.4-0 (https://sourceforge.net/projects/xampp/file
 
 
 
-La página antes del registro de usuario se dividirá en:
+La PÁGINA ANTES DEL REGISTRO DEL USUARIO, MOSTRARÁ:
 
 ################ HOME ################################################
 
@@ -33,3 +33,19 @@ En ella mostrará los tipos de suscripción y dejará poder comprarla direvtamen
 ################ CONTACTO #########################################
 
 En ella muestra la página de contacto, donde el usuario podrá mandar un correo para pedir ayuda. Muestra un mapa con la ubicación de las oficinas
+
+
+
+
+
+
+
+
+
+LA PÁGINA UNA VEZ EL USUARIO ESTÁ REGISTRADO:
+
+####################### Principal   #########################################
+
+En ella aparecerá otro carrusel, esta vez con su información de pasos y una calculadora para ir llevando las cuentas de las calorias consumidas y quemadas.
+
+###########EL RESTO DE APARTADOS SE TERMINARÁN A LO LARGOS DE LOS PRÓXIMOS SPRINTS##################################
