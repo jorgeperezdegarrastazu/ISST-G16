@@ -18,32 +18,12 @@
 
 </head>
 
-<di>
-    <!-- Barra Navegación -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-        <div class="container text-light">
-            <div class="w-100 d-flex justify-content-between">
-                <div>
-                    <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@nutriapp.com</a>
-                    <i class="fa fa-phone mx-2"></i>
-                </div>
-                <div>
-                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- Barra Navegación -->
-
 
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="index.php">
                 NutriApp
             </a>
 
@@ -55,16 +35,16 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">Sobre Nosotros</a>
+                            <a class="nav-link" href="about.php">Sobre Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="suscription.html">Suscripciones</a>
+                            <a class="nav-link" href="suscription.php">Suscripciones</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contacto</a>
+                            <a class="nav-link" href="contact.php">Contacto</a>
                         </li>
                     </ul>
                 </div>
@@ -77,14 +57,16 @@
                             </div>
                         </div>
                     </div>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#"  data-bs-toggle="modal" data-bs-target="#templatemo_search"> <!--onclick="toggleLoginPanel()""-->
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                    <a class="nav-icon position-relative text-decoration-none" href="#"  data-bs-toggle="modal" data-bs-target="#templatemo_search" style="display: -webkit-box;"> 
+                        <span class="nav-link"><strong>REGÍSTRATE</strong></span>
                         <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>   -->
                     </a>
+                    <div>
+
+                    </div>
+                    <!-- <a class="nav-icon position-relative text-decoration-none" href="#">
+                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                    </a> -->
                 </div>
             </div>
 
@@ -257,12 +239,17 @@
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light"><strong>Info</strong></h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="index.html">Home</a></li>
-                        <li><a class="text-decoration-none" href="about.html">Sobre Nosotros</a></li>
-                        <li><a class="text-decoration-none" href="shop.html">Suscripciones</a></li>
-                        <li><a class="text-decoration-none" href="index.contact">Contacto</a></li>
+                        <li><a class="text-decoration-none" href="index.php">Home</a></li>
+                        <li><a class="text-decoration-none" href="about.php">Sobre Nosotros</a></li>
+                        <li><a class="text-decoration-none" href="shop.php">Suscripciones</a></li>
+                        <li><a class="text-decoration-none" href="contact.php">Contacto</a></li>
                     </ul>
                 </div>
+
+                <div class="col-md-4 pt-5">
+                    <img src="./assets/img/LOGO_ESCUELA.png" alt="Logo de la ETSIT" style="width: 110%; height: auto; opacity:0.8 opacity:0.8">
+                </div>
+
 
             </div>
 
@@ -310,37 +297,6 @@
     <script src="assets/js/templatemo.js"></script>
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/formulario.js"></script>
-
-    <!-- Script de SQL.js -->
-    <!-- <script type="module">
-        import { openDB, deleteDB, wrap, unwrap } from 'https://cdn.jsdelivr.net/npm/idb@8/+esm';
-      
-        async function doDatabaseStuff() {
-          const db = await openDB('usuarios.db');
-        }
-    </script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/sql-asm.js" integrity="sha512-iM0uXI4U8SuJdfzy3KTUp4umkH+XweQr7LcShsvKILNh38n22rPzQrmigVBO1Kywp00iVsLQ1MAI+nPy2dSoJw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
-    <script>
-        async function openDatabase() {
-          try {
-            const db = new SQL.Database();
-            await db.open('usuarios.db');
-            console.log('Database opened successfully!');
-
-          } catch (error) {
-            console.error('Error opening database:', error);
-          }
-        }
-        openDatabase();
-        </script> -->
-
-        <!-- <script>
-            const sqlite3 = require('sqlite3').verbose();
-            const db = new sqlite3.Database('database.db');
-        </script> -->
-
-    <!-- Script de tu registro.js -->
     <script src="assets/sql/registro.js"></script>
 
 </body>

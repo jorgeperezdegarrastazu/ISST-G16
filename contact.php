@@ -23,31 +23,12 @@
 </head>
 
 <body>
-    <!-- Barra Navegación -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-        <div class="container text-light">
-            <div class="w-100 d-flex justify-content-between">
-                <div>
-                    <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@nutriapp.com</a>
-                    <i class="fa fa-phone mx-2"></i>
-                </div>
-                <div>
-                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- Barra Navegación -->
-
-
+    
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="index.php">
                 NutriApp
             </a>
 
@@ -59,16 +40,16 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">Sobre Nosotros</a>
+                            <a class="nav-link" href="about.php">Sobre Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="suscription.html">Suscripciones</a>
+                            <a class="nav-link" href="suscription.php">Suscripciones</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contacto</a>
+                            <a class="nav-link" href="contact.php">Contacto</a>
                         </li>
                     </ul>
                 </div>
@@ -81,45 +62,24 @@
                             </div>
                         </div>
                     </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#" onclick="toggleLoginPanel()">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                    <a class="nav-icon position-relative text-decoration-none" href="#"  data-bs-toggle="modal" data-bs-target="#templatemo_search" style="display: -webkit-box;"> 
+                        <span class="nav-link"><strong>REGÍSTRATE</strong></span>
                         <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>   -->
                     </a>
+                    <div>
+
+                    </div>
+                    <!-- <a class="nav-icon position-relative text-decoration-none" href="#">
+                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                    </a> -->
                 </div>
             </div>
 
         </div>
     </nav>
     <!-- Header -->
+    
 
-    <!-- Panel de inicio de sesión y registro -->
-    <div id="register-panel" style="display: none;">
-        <!-- Formulario de registro (visible por defecto) -->
-        <form id="register-form" action="registro.php" method="post">
-            <input type="text" name="nombre" placeholder="Nombre completo" required>
-            <input type="text" name="username" placeholder="Nombre de usuario" required>
-            <input type="password" name="password" placeholder="Contraseña" required>
-            <button type="submit">Registrarse</button>
-        </form>
-
-        <!-- Enlace para ir al formulario de inicio de sesión -->
-        <p>¿Ya tienes una cuenta? <a href="#" onclick="showLoginForm()">Inicia sesión aquí</a></p>
-    </div>
-    <div id="login-panel" style="display: none;"></div>
-        <!-- Formulario de inicio de sesión (inicialmente oculto) -->
-        <form id="login-form" action="login.php" method="post" style="display: none;">
-            <input type="text" name="username" placeholder="Nombre de usuario" required>
-            <input type="password" name="password" placeholder="Contraseña" required>
-            <button type="submit">Iniciar Sesión</button>
-        </form>
-    </div>
 
     <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -127,16 +87,35 @@
             <div class="w-100 pt-1 mb-5 text-right">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
-                    </button>
-                </div>
-            </form>
+            <div id="register-panel" style="display: block;">
+                <!-- Formulario de registro (visible por defecto) -->
+                <form id="register-form" action="php/registro.php" method="POST">
+                    <!-- Campos del formulario -->
+                    <input class="modal-content modal-body border-0 p-0" type="text" name="nombre" placeholder="Nombre" >
+                    <input class="modal-content modal-body border-0 p-0" form-control type="text" name="apellido" placeholder="Apellido" >
+                    <input class="modal-content modal-body border-0 p-0"   type="number" name="peso" placeholder="Peso" >
+                    <input  class="modal-content modal-body border-0 p-0" type="number" name="altura" placeholder="Altura en cm" >
+                    <input  class="modal-content modal-body border-0 p-0" type="number" name="edad" placeholder="Edad" >
+                    <input  class="modal-content modal-body border-0 p-0" type="email" name="email" placeholder="Correo electrónico" >
+                    <input  class="modal-content modal-body border-0 p-0" type="text" name="username" placeholder="Nombre de usuario" >
+                    <input class="modal-content modal-body border-0 p-0" type="password" name="contrasena" placeholder="Contraseña" >
+                    <button class="modal-content modal-body border-0 p-0" type="submit">Registrarse</button>
+                </form>
+            
+                <!-- Enlace para ir al formulario de inicio de sesión -->
+                <p>¿Ya tienes una cuenta? Inicia sesión</a></p>
+            </div>
+            <div id="login-panel" style="display: block;"></div>
+                <!-- Formulario de inicio de sesión (inicialmente oculto) -->
+                <form id="login-form" action="php/login.php" method="POST">
+                    <input class="modal-content modal-body border-0 p-0" type="text" name="username" placeholder="Nombre de usuario" >
+                    <input class="modal-content modal-body border-0 p-0" type="password" name="password" placeholder="Contraseña" >
+                    <button class="modal-content modal-body border-0 p-0" type="submit-login">Iniciar Sesión</button>
+                </form>
+            </div>
         </div>
     </div>
+
 
 
     <!-- Start Content Page -->
@@ -225,11 +204,15 @@
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light"><strong>Info</strong></h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="index.html">Home</a></li>
-                        <li><a class="text-decoration-none" href="about.html">Sobre Nosotros</a></li>
-                        <li><a class="text-decoration-none" href="shop.html">Suscripciones</a></li>
-                        <li><a class="text-decoration-none" href="index.contact">Contacto</a></li>
+                        <li><a class="text-decoration-none" href="index.php">Home</a></li>
+                        <li><a class="text-decoration-none" href="about.php">Sobre Nosotros</a></li>
+                        <li><a class="text-decoration-none" href="shop.php">Suscripciones</a></li>
+                        <li><a class="text-decoration-none" href="contact.php">Contacto</a></li>
                     </ul>
+                </div>
+
+                <div class="col-md-4 pt-5">
+                    <img src="./assets/img/LOGO_ESCUELA.png" alt="Logo de la ETSIT" style="width: 110%; height: auto; opacity:0.8">
                 </div>
 
             </div>

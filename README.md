@@ -10,7 +10,7 @@ Es necesario instalar XAMPP 8.2.4-0 (https://sourceforge.net/projects/xampp/file
 
 1)  Al abrirla, nos vamos a "Manage Servers" e iniciamos todo.
 2)  Movemos nuestra carpeta del proyecto a XAMPP/htdocs. En mac, XAMPP se encuentra en la carpeta de Aplicaciones.
-3)  Abrimos el navegador y escribimos localhost/phpmyadmin, hay deberás crear una BBDD de nombre "usuarios" y nombre de la tabla "usuarios_db".
+3)  Abrimos el navegador y escribimos localhost/phpmyadmin, ahí deberás crear una BBDD de nombre "usuarios" y nombre de la tabla "usuarios_db".
 4)  Ya podrás acceder a la página mediante un servidor local escribiendo en el buscador http://localhost/ISST-G16
 ######  IMPORTANTE  ##############################################################
 
