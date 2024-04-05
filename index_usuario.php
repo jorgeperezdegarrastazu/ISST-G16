@@ -122,6 +122,11 @@
                                 <input type="number" id="nuevas-calorias-consumidas" class="form-control" placeholder="Introduce las calorías">
                                 <button type="button" id="agregar-calorias-consumidas" class="btn btn-primary">Añadir</button>
                             </div>
+                            <div class="form-group">
+                                <label for="alimentos">Selecciona un alimento:</label>
+                                <select id="alimentos" class="form-control"></select>
+                                <!-- <button type="button" id="obtener-alimentos" class="btn btn-primary mt-2">Obtener alimentos</button> -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -143,13 +148,18 @@
                                 <input type="number" id="nuevas-calorias-quemadas" class="form-control" placeholder="Introduce las calorías">
                                 <button type="button" id="agregar-calorias-quemadas" class="btn btn-primary">Añadir</button>
                             </div>
+                            <div class="form-group">
+                                <label for="ejercicios">Selecciona un ejercicio:</label>
+                                <select id="ejercicios" class="form-control"></select>
+                                <!-- <button type="button" id="obtener-alimentos" class="btn btn-primary mt-2">Obtener alimentos</button> -->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div>s
 </div>
 
     <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#templatemo-carousel" role="button" data-bs-slide="prev">
@@ -212,6 +222,63 @@
         botonQuemadas.addEventListener('click', restarCaloriasQuemadas);
     });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const selectAlimentos = document.getElementById('alimentos');
+
+        // Función para cargar los datos de recipes.json y agregar las opciones al selector
+        function cargarAlimentos() {
+            fetch('./assets/recipes.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Limpiar opciones anteriores
+                    selectAlimentos.innerHTML = '';
+
+                    // Iterar sobre los datos y agregar cada nombre de receta como opción en el selector
+                    data.forEach(recipe => {
+                        const option = document.createElement('option');
+                        option.textContent = recipe.Name;
+                        option.value = recipe.Name; // Puedes ajustar esto según la estructura de datos de recipes.json
+                        selectAlimentos.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error al cargar alimentos:', error));
+        }
+
+        // Llamar a la función para cargar alimentos cuando se carga la página
+        cargarAlimentos();
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const selectDeportes = document.getElementById('ejercicios');
+
+        // Función para cargar los datos del archivo de deportes y agregar las opciones al selector
+        function cargarDeportes() {
+            fetch('./assets/sports.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Limpiar opciones anteriores
+                    selectDeportes.innerHTML = '';
+
+                    // Iterar sobre los datos y agregar cada deporte como opción en el selector
+                    data.sports.forEach(sport => {
+                        const option = document.createElement('option');
+                        option.textContent = sport;
+                        option.value = sport; // Puedes ajustar esto según la estructura de datos del archivo de deportes
+                        selectDeportes.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error al cargar deportes:', error));
+        }
+
+        // Llamar a la función para cargar deportes cuando se carga la página
+        cargarDeportes();
+    });
+</script>
+
+
+
 
 
 

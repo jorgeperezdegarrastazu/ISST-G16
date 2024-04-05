@@ -17,7 +17,7 @@ CREACIÓN DE BBDD Y TABLAS
 Necesitaremos crear una BBDD con los datos del los usuarios. Para ello:
 
 1)  Nos iremos a localhost/phpmyadmin y en la parte de la izquierda le damos a añadir. Es necesario llamarla "usuarios".
-2)  Necesitamos crear 2 tablas. Una con los datos del usuario y otra enlazada a la primeras con sus calorias y pasos. Para ello habrá que meter estas dos querys en la parte de arriba donde pone "SQL" (primero una y luego otra, no a la vez).
+2)  Necesitamos crear 2 tablas. Una con los datos del usuario y otra enlazada a la primeras con sus calorias y pasos. Para ello habrá que meter estas dos querys en la parte de arriba donde pone "SQL" (primero una y luego otra, no a la vez). Despues de meter la query hay que puylsar en "continuar".
 
 CREATE TABLE usuarios_db (
   id INT(11) NOT NULL AUTO_INCREMENT,
@@ -32,7 +32,7 @@ CREATE TABLE usuarios_db (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE estadisticas (
+CREATE TABLE calorias_pasos (
   id INT(11) NOT NULL AUTO_INCREMENT,
   calorias_quemadas INT(11) NOT NULL,
   calorias_consumidas INT(11) NOT NULL,
