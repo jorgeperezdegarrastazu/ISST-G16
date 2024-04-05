@@ -87,7 +87,7 @@
     <!-- Start Banner Hero -->
     <div id="templatemo-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
         <div class="carousel-inner" >
-            <div style=" min-height: 35rem;" class="carousel-item active">
+            <div style=" min-height: 30rem;" class="carousel-item active">
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">

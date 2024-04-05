@@ -87,40 +87,6 @@
     
 
 
-    <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div id="register-panel" style="display: block;">
-                <!-- Formulario de registro (visible por defecto) -->
-                <form id="register-form" action="php/registro_usuario.php" method="POST">
-                    <!-- Campos del formulario -->
-                    <input class="modal-content modal-body border-0 p-0" type="text" name="nombre" placeholder="Nombre" >
-                    <input class="modal-content modal-body border-0 p-0" form-control type="text" name="apellido" placeholder="Apellido" >
-                    <input class="modal-content modal-body border-0 p-0"   type="number" name="peso" placeholder="Peso" >
-                    <input  class="modal-content modal-body border-0 p-0" type="number" name="altura" placeholder="Altura en cm" >
-                    <input  class="modal-content modal-body border-0 p-0" type="number" name="edad" placeholder="Edad" >
-                    <input  class="modal-content modal-body border-0 p-0" type="email" name="email" placeholder="Correo electrónico" >
-                    <input  class="modal-content modal-body border-0 p-0" type="text" name="username" placeholder="Nombre de usuario" >
-                    <input class="modal-content modal-body border-0 p-0" type="password" name="contrasena" placeholder="Contraseña" >
-                    <button class="modal-content modal-body border-0 p-0" type="submit">Registrarse</button>
-                </form>
-            
-                <!-- Enlace para ir al formulario de inicio de sesión -->
-                <p>¿Ya tienes una cuenta? Inicia sesión</a></p>
-            </div>
-            <div id="login-panel" style="display: block;"></div>
-                <!-- Formulario de inicio de sesión (inicialmente oculto) -->
-                <form id="login-form" action="php/login_usuario.php" method="POST">
-                    <input class="modal-content modal-body border-0 p-0" type="text" name="username" placeholder="Nombre de usuario" >
-                    <input class="modal-content modal-body border-0 p-0" type="password" name="password" placeholder="Contraseña" >
-                    <button class="modal-content modal-body border-0 p-0" type="submit-login">Iniciar Sesión</button>
-                </form>
-            </div>
-        </div>
-    </div>
 
 
 
@@ -130,46 +96,8 @@
                     <img src="assets/img/trabajo-en-progreso.png" alt="About NutriApp" style="max-width: 75%; margin-left: 20%;">
                 
     </section>
-    <!-- Close Banner -->
 
-    <!-- Start Section -->
-    <section class="container py-5">
-        <div class="row text-center pt-5 pb-3">
-            <div class="col-lg-6 m-auto">
-                <h1 class="h1">Nuestros Servicios</h1>
-            </div>
-        </div>
-        <div class="row">
-
-            <div class="col-md-6 col-lg-3 pb-5">
-                <div class="h-100 py-5 services-icon-wap shadow">
-                    <div class="h1 text-success text-center"><i class="fa fa-truck fa-lg"></i></div>
-                    <h2 class="h5 mt-4 text-center">Conteo de calorías y dietas personalizadas</h2>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3 pb-5">
-                <div class="h-100 py-5 services-icon-wap shadow">
-                    <div class="h1 text-success text-center"><i class="fas fa-exchange-alt"></i></div>
-                    <h2 class="h5 mt-4 text-center">Ejercicios personalizados y retos mensuales</h2>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3 pb-5">
-                <div class="h-100 py-5 services-icon-wap shadow">
-                    <div class="h1 text-success text-center"><i class="fa fa-percent"></i></div>
-                    <h2 class="h5 mt-4 text-center">Experto IA</h2>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 pb-5">
-                <div class="h-100 py-5 services-icon-wap shadow">
-                    <div class="h1 text-success text-center"><i class="fa fa-percent"></i></div>
-                    <h2 class="h5 mt-4 text-center">Y mucho más...</h2>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Section -->
+    
 
     
 <!-- Footer -->

@@ -87,64 +87,15 @@
     
 
 
-    <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div id="register-panel" style="display: block;">
-                <!-- Formulario de registro (visible por defecto) -->
-                <form id="register-form" action="php/registro_usuario.php" method="POST">
-                    <!-- Campos del formulario -->
-                    <input class="modal-content modal-body border-0 p-0" type="text" name="nombre" placeholder="Nombre" >
-                    <input class="modal-content modal-body border-0 p-0" form-control type="text" name="apellido" placeholder="Apellido" >
-                    <input class="modal-content modal-body border-0 p-0"   type="number" name="peso" placeholder="Peso" >
-                    <input  class="modal-content modal-body border-0 p-0" type="number" name="altura" placeholder="Altura en cm" >
-                    <input  class="modal-content modal-body border-0 p-0" type="number" name="edad" placeholder="Edad" >
-                    <input  class="modal-content modal-body border-0 p-0" type="email" name="email" placeholder="Correo electrónico" >
-                    <input  class="modal-content modal-body border-0 p-0" type="text" name="username" placeholder="Nombre de usuario" >
-                    <input class="modal-content modal-body border-0 p-0" type="password" name="contrasena" placeholder="Contraseña" >
-                    <button class="modal-content modal-body border-0 p-0" type="submit">Registrarse</button>
-                </form>
-            
-                <!-- Enlace para ir al formulario de inicio de sesión -->
-                <p>¿Ya tienes una cuenta? Inicia sesión</a></p>
-            </div>
-            <div id="login-panel" style="display: block;"></div>
-                <!-- Formulario de inicio de sesión (inicialmente oculto) -->
-                <form id="login-form" action="php/login_usuario.php" method="POST">
-                    <input class="modal-content modal-body border-0 p-0" type="text" name="username" placeholder="Nombre de usuario" >
-                    <input class="modal-content modal-body border-0 p-0" type="password" name="password" placeholder="Contraseña" >
-                    <button class="modal-content modal-body border-0 p-0" type="submit-login">Iniciar Sesión</button>
-                </form>
-            </div>
-        </div>
-    </div>
+   
 
 
-    <!-- Tipos de suscripción -->
+    
     <section class="bg-light">
-    <img src="assets/img/trabajo-en-progreso.png" alt="About NutriApp" style="max-width: 75%; margin-left: 20%;">
+        <img src="assets/img/trabajo-en-progreso.png" alt="About NutriApp" style="max-width: 75%; margin-left: 20%;">
     </section>
-    <!-- Tipos de suscripción -->
 
-    <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+    
 
 
 
