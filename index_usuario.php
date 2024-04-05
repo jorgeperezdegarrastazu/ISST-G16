@@ -115,7 +115,8 @@
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
-                            <h1 class="h1 text-success">Llevas <strong id="calorias-consumidas">888</strong> calorías consumidas</h1>
+                            <p class="h1 text-success" id="total-calorias-consumidas"><strong>0</strong></p>
+                            <p class="h1 text-success"><strong>Calorías Consumidas</strong></p>
                             <h3 class="h2">Si has comido algo, ¡apúntalo!</h3>
                             <div class="form-group">
                                 <input type="number" id="nuevas-calorias-consumidas" class="form-control" placeholder="Introduce las calorías">
@@ -135,7 +136,8 @@
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
-                            <h1 class="h1 text-success">Llevas<strong> 150 calorías</strong> quemadas</h1>
+                            <p class="h1 text-success" id="total-calorias-quemadas"><strong>0</strong></p>
+                            <p class="h1 text-success"><strong>Calorías Quemadas</strong></p>
                             <h3 class="h2">Si has realizado algún ejercicio, ¡apúntalo!</h3>
                             <div class="form-group">
                                 <input type="number" id="nuevas-calorias-quemadas" class="form-control" placeholder="Introduce las calorías">
@@ -161,11 +163,12 @@
     <div class="row">
         <div class="col">
             <h1 class="h2 text-success">Total de calorías:</h1>
-            <p class="h2 text-success"  id="total-calorias""><strong>0</strong></p>
+            <p class="h2 text-success"  id="total-calorias"><strong>0</strong></p>
         </div>
     </div>
 </div>
 
+<!-- Script JavaScript -->
 <!-- Script JavaScript -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -174,26 +177,34 @@
         const botonConsumidas = document.getElementById('agregar-calorias-consumidas');
         const botonQuemadas = document.getElementById('agregar-calorias-quemadas');
         const totalCaloriasElement = document.getElementById('total-calorias');
+        const totalCaloriasConsumidasElement = document.getElementById('total-calorias-consumidas');
+        const totalCaloriasQuemadasElement = document.getElementById('total-calorias-quemadas');
 
         let totalCalorias = 0;
+        let totalCaloriasConsumidas = 0;
+        let totalCaloriasQuemadas = 0;
 
-        // Función para actualizar el total de calorías
-        function actualizarTotalCalorias() {
+        // Función para actualizar los elementos HTML con los totales
+        function actualizarTotales() {
             totalCaloriasElement.textContent = totalCalorias;
+            totalCaloriasConsumidasElement.textContent = totalCaloriasConsumidas;
+            totalCaloriasQuemadasElement.textContent = totalCaloriasQuemadas;
         }
 
         // Función para sumar las calorías consumidas al total
         function sumarCaloriasConsumidas() {
             const caloriasConsumidas = parseFloat(inputConsumidas.value) || 0;
+            totalCaloriasConsumidas += caloriasConsumidas;
             totalCalorias += caloriasConsumidas;
-            actualizarTotalCalorias();
+            actualizarTotales();
         }
 
         // Función para restar las calorías quemadas al total
         function restarCaloriasQuemadas() {
             const caloriasQuemadas = parseFloat(inputQuemadas.value) || 0;
+            totalCaloriasQuemadas += caloriasQuemadas;
             totalCalorias -= caloriasQuemadas;
-            actualizarTotalCalorias();
+            actualizarTotales();
         }
 
         // Agregar eventos de clic a los botones "Añadir"
@@ -201,6 +212,7 @@
         botonQuemadas.addEventListener('click', restarCaloriasQuemadas);
     });
 </script>
+
 
 
     <!-- End Banner Hero -->
