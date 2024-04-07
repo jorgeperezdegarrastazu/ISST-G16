@@ -1,6 +1,7 @@
 <?php
 
 include 'conexion.php';
+session_start();
 
 // Verificar si se han enviado datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -12,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT * FROM usuarios_db WHERE username='".$username."' and contrasena='".$contrasena."'";
 
     if (mysqli_num_rows(mysqli_query($conexion, $sql)) > 0){
+        $_SESSION['username'] = $username;
         echo "
             <script>
                  alert('Bienvenido!!!');

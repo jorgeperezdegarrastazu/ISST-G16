@@ -1,3 +1,28 @@
+<?php
+session_start();
+include './php/conexion.php';
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION['username'])) {
+    // Si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión
+    header("Location: index.php");
+    exit();
+}
+
+// Recuperar el nombre de usuario de la sesión
+$username = $_SESSION['username'];
+
+// Consultar la base de datos para obtener los datos del usuario
+$sql = "SELECT * FROM usuarios_db WHERE username = '$username'";
+$result = mysqli_query($conexion, $sql);
+
+if (!$result || mysqli_num_rows($result) == 0) {
+    // Si no se encuentra ningún usuario con el nombre de usuario, mostrar un mensaje de error
+    echo "No se encontraron datos para este usuario.";
+} else {
+    // Mostrar los datos del usuario
+    $row = mysqli_fetch_assoc($result);
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,7 +119,15 @@
 
     <!-- Start Content Page -->
     <div class="container-fluid bg-light py-5">
-        <img src="assets/img/trabajo-en-progreso.png" alt="About NutriApp" style="max-width: 75%; margin-left: 20%;">
+        <h1 class="text-success">Perfil de Usuario</h1>
+                    
+            <p><strong>Nombre de usuario:</strong> <?php echo $row['username']; ?></p>
+            <p><strong>Nombre:</strong> <?php echo $row['nombre']; ?></p>
+            <p><strong>Apellido:</strong> <?php echo $row['apellido']; ?></p>
+            <p><strong>Peso:</strong> <?php echo $row['peso']; ?></p>
+            <p><strong>Altura:</strong> <?php echo $row['altura']; ?></p>
+            <p><strong>Edad:</strong> <?php echo $row['edad']; ?></p>
+            <p><strong>Email:</strong> <?php echo $row['email']; ?></p>
     </div>
 
     
@@ -177,3 +210,10 @@
 </body>
 
 </html>
+
+<?php
+}
+
+// Cerrar la conexión a la base de datos
+mysqli_close($conexion);
+?>

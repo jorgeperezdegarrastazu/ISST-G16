@@ -21,8 +21,8 @@
 
 <body>
     
-     <!-- Header -->
-     <nav class="navbar navbar-expand-lg navbar-light shadow">
+      <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
             <a class="navbar-brand text-success logo h1 align-self-center" href="index_usuario.php">
@@ -60,6 +60,7 @@
                         </div>
                     </div>
                     <?php
+                    session_start();
                     // Verificar si el usuario ha iniciado sesión
                     if (isset($_SESSION['username'])) {
                         $username = $_SESSION['username'];

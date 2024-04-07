@@ -20,6 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Ejecutar la consulta
     if (mysqli_query($conexion, $sql)) {
+        session_start();
+        $_SESSION['username'] = $username;
         echo "
             <script>
                  alert('Registro exitoso. ¡Bienvenido, $nombre!');
