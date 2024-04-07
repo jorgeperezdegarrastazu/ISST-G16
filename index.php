@@ -100,16 +100,19 @@
                 <!-- Enlace para ir al formulario de inicio de sesión -->
                 <p>¿Ya tienes una cuenta? Inicia sesión</a></p>
             </div>
+            
             <div id="login-panel" style="display: block;"></div>
-                <!-- Formulario de inicio de sesión (inicialmente oculto) -->
                 <form id="login-form" action="php/login.php" method="POST">
                     <input class="modal-content modal-body border-0 p-0" type="text" name="username" placeholder="Nombre de usuario" >
-                    <input class="modal-content modal-body border-0 p-0" type="password" name="password" placeholder="Contraseña" >
+                    <input class="modal-content modal-body border-0 p-0" type="password" name="contrasena" placeholder="Contraseña" >
                     <button class="modal-content modal-body border-0 p-0" type="submit-login">Iniciar Sesión</button>
                 </form>
             </div>
+            
         </div>
     </div>
+
+    
 
 
 

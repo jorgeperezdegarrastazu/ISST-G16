@@ -18,34 +18,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$nombre', '$apellido', '$peso', '$altura', '$edad', '$email', '$username', '$contrasena')";
 
 
-    // $verificar_correo = mysqli_query($conexion, "SELECT * FROM usuarios WHERE email='$email' ");
-
-    // if(mysqli_num_rows($verificar_correo) > 0){
-    //     echo '
-    //         <script>
-    //             alert("Este correo ya está registrado");
-    //             window.location = "../index.php";
-    //         </script>
-    //     ';
-    //     exit();
-    // } 
-
-
     // Ejecutar la consulta
     if (mysqli_query($conexion, $sql)) {
-        echo '
+        echo "
             <script>
-                 alert("Registro exitoso. ¡Bienvenido, $nombre!");
-                 window.location = "../index_usuario.php";
+                 alert('Registro exitoso. ¡Bienvenido, $nombre!');
+                 window.location = '../index_usuario.php';
             </script>
-         ';
+         ";
     } else {
-        echo '
+        echo "
             <script>
-                 alert("Error en el registro");
-                 window.location = "../index.php";
+                 alert('Error en el registro');
+                 window.location = '../index.php';
             </script>
-         ';
+         ";
     }
 
     // Cerrar la conexión
