@@ -11,7 +11,7 @@ import time
 
 @step('the entrance the web')
 def step_impl(self):
-    service = ChromeService(executable_path=r'/Applications/XAMPP/xamppfiles/htdocs/ISST-G16-1/features/steps/chromedriver-mac-x64/chromedriver')
+    service = ChromeService(executable_path=r'/Applications/XAMPP/xamppfiles/htdocs/ISST-G16-1/features/chromedriver')
     # chrome_options = Options()
     # chrome_options.add_argument("start-maximized")
     web = "http://localhost/ISST-G16-1/"
