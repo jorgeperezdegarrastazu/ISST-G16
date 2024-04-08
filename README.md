@@ -77,14 +77,14 @@ En ella muestra la página de contacto, donde el usuario podrá mandar un correo
 
 
 
-
-
-
-
 LA PÁGINA UNA VEZ EL USUARIO ESTÁ REGISTRADO:
 
-####################### Principal   #########################################
+####################### PRINCIPAL   #########################################
 
 En ella aparecerá otro carrusel, esta vez con su información de pasos y una calculadora para ir llevando las cuentas de las calorias consumidas y quemadas.
+
+####################### TUS DATOS ##################################################
+
+Aquí se muestran todos los datos que tiene la BBDD sobre el usuario que se acaba de registrar/loguear. Por motivos obvios, no aparece la contraseña.
 
 ###########EL RESTO DE APARTADOS SE TERMINARÁN A LO LARGOS DE LOS PRÓXIMOS SPRINTS##################################
