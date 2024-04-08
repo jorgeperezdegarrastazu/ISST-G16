@@ -139,7 +139,7 @@
                                 <li class="text-muted">Tablas de entrenamiento estandarizados</li>
                                 <li class="text-muted">Acceso a calculadora de calorías</li>
                                 <li class="text-muted">Acceso a las calorías de los alimentos</li>
-                                <li class="text-muted">vision de metas estandar</li>
+                                <li class="text-muted">Acceso a las calorías de los ejercicios</li>
                         </div>
                     </div>
                 </div>
@@ -157,10 +157,11 @@
                                 <li class="text-muted">Tablas de entrenamiento personalizadas</li>
                                 <li class="text-muted">Acceso a calculadora de calorías</li>
                                 <li class="text-muted">Acceso a las calorías de los alimentos</li>
-                                <li class="text-muted">Acceso a un entrenador personal</li>
-                                <li class="text-muted">Acceso a consulta a traves de videollamada con su entrenador</li>
-                                <li class="text-muted">Acceso a consulta a traves de videollamada con su nutricionista</li>
-                                <li class="text-muted">vision de sus metas personalizadas</li>
+                                <li class="text-muted">Acceso a las calorías de los ejercicios</li>
+                                <li class="text-muted">Acceso a consulta de valores nuricionales de los alimentos</li>
+                                <li class="text-muted">Acceso a consulta recomendaciones de dietas personalizadas</li>
+                                <li class="text-muted">Posibilidad de vincular tus pasos del móvil</li>
+                                <li class="text-muted">Posibilidad de vincular tu cuenta de Google para programar avisos</li>
                             </p>
                         </div>
                     </div>
