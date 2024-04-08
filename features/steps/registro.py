@@ -10,7 +10,7 @@ import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-with open('/XAMPP/htdocs/ISST-G16/features/data.json', 'r') as file:
+with open('/Applications/XAMPP/xamppfiles/htdocs/ISST-G16/features/data.json', 'r') as file:
     data = json.load(file)
 
 
