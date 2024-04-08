@@ -45,6 +45,12 @@ CREATE TABLE calorias_pasos (
 
 ######  IMPORTANTE  ##############################################################
 
+###### IMPORTANTE PARA PRUEBAS #######################################################################################################
+
+Será necsario instalar behave y selenium. Para ello escribiremos "pip install behave" y "pip install selenium" en la terminal.
+
+###### IMPORTANTE PARA PRUEBAS #######################################################################################################
+
 
 
 La PÁGINA ANTES DEL REGISTRO DEL USUARIO, MOSTRARÁ:

@@ -1,0 +1,5 @@
+{
+    "registrate": "//*[@id='templatemo_main_nav']/div[2]/a/span/strong",
+    "login_box": "//*[@id='login-form']/input[1]",
+    "password_box": "//*[@id='login-form']/input[2]"
+}
