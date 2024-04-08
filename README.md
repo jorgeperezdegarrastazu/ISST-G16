@@ -48,6 +48,8 @@ CREATE TABLE calorias_pasos (
 ###### IMPORTANTE PARA PRUEBAS #######################################################################################################
 
 Será necsario instalar behave y selenium. Para ello escribiremos "pip install behave" y "pip install selenium" en la terminal.
+Es muy importante cambiar las rutas del chromedriver, ya que sino no inicia. Para ello, cogeremos el Path completo y lo copiaremos en registro.py (linea 19).
+Para arrancar la prueba, bastará con elegir el caso deseado en main, hacer click derecho en main.py y pulsar "Ejecutar archivo de python en Terminal".
 
 ###### IMPORTANTE PARA PRUEBAS #######################################################################################################
 
