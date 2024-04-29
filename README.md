@@ -88,3 +88,18 @@ En ella aparecerá otro carrusel, esta vez con su información de pasos y una ca
 Aquí se muestran todos los datos que tiene la BBDD sobre el usuario que se acaba de registrar/loguear. Por motivos obvios, no aparece la contraseña.
 
 ###########EL RESTO DE APARTADOS SE TERMINARÁN A LO LARGOS DE LOS PRÓXIMOS SPRINTS##################################
+
+
+
+
+
+
+COSAS NUEVAS:
+
+
+INTALACION MAVEN:
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew install maven
+

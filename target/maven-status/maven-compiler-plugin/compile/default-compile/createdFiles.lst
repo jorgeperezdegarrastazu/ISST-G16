@@ -1,0 +1,3 @@
+main/java/com/nutriapp/repository/JpaRepository.class
+main/java/com/nutriapp/model/User.class
+main/java/com/nutriapp/repository/UserRepository.class
