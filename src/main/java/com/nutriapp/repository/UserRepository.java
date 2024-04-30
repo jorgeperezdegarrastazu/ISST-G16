@@ -1,8 +1,8 @@
-package main.java.com.nutriapp.repository;
+package com.nutriapp.repository;
 
 import org.springframework.stereotype.Repository;
 
-import main.java.com.nutriapp.model.User;
+import com.nutriapp.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {

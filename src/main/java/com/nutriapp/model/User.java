@@ -1,4 +1,4 @@
-package main.java.com.nutriapp.model;
+package com.nutriapp.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
