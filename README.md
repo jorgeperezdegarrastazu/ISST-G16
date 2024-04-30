@@ -48,6 +48,8 @@ CREATE TABLE calorias_pasos (
 ###### IMPORTANTE PARA PRUEBAS #######################################################################################################
 
 Será necsario instalar behave y selenium. Para ello escribiremos "pip install behave" y "pip install selenium" en la terminal.
+Es muy importante cambiar las rutas del chromedriver, ya que sino no inicia. Para ello, cogeremos el Path completo y lo copiaremos en registro.py (linea 19).
+Para arrancar la prueba, bastará con elegir el caso deseado en main, hacer click derecho en main.py y pulsar "Ejecutar archivo de python en Terminal".
 
 ###### IMPORTANTE PARA PRUEBAS #######################################################################################################
 
@@ -75,14 +77,29 @@ En ella muestra la página de contacto, donde el usuario podrá mandar un correo
 
 
 
-
-
-
-
 LA PÁGINA UNA VEZ EL USUARIO ESTÁ REGISTRADO:
 
-####################### Principal   #########################################
+####################### PRINCIPAL   #########################################
 
 En ella aparecerá otro carrusel, esta vez con su información de pasos y una calculadora para ir llevando las cuentas de las calorias consumidas y quemadas.
 
+####################### TUS DATOS ##################################################
+
+Aquí se muestran todos los datos que tiene la BBDD sobre el usuario que se acaba de registrar/loguear. Por motivos obvios, no aparece la contraseña.
+
 ###########EL RESTO DE APARTADOS SE TERMINARÁN A LO LARGOS DE LOS PRÓXIMOS SPRINTS##################################
+
+
+
+
+
+
+COSAS NUEVAS:
+
+
+INTALACION MAVEN:
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew install maven
+
