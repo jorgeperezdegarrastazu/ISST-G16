@@ -1,0 +1,25 @@
+#row-s{
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: calc(var(--bs-gutter-y) * -1);
+    margin-right: calc(var(--bs-gutter-x)/ -2);
+    margin-left: calc(var(--bs-gutter-x)/ -2);
+}
+
+
+#registrate{
+    color:aquamarine;
+}
+
+#nuevas-calorias {
+    width: 150px;
+    margin-right: 10px;
+  }
+  
+#agregar-calorias {
+    background-color: rgb(110, 169, 116);
+    color: #fff;
+}
