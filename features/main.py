@@ -6,7 +6,7 @@ from behave.__main__ import main as behave_main
 
 
 def main():
-    behave_main(["features", '-t @Caso', '-k'])
+    behave_main(["features", '-t @Caso1', '-k'])
 
 
 if __name__ == '__main__':

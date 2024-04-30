@@ -16,7 +16,7 @@ with open('/XAMPP/htdocs/ISST-G16/features/data.json', 'r') as file:
 
 @step('the entrance the web')
 def step_impl(self):
-    service = ChromeService(executable_path=r'/Applications/XAMPP/xamppfiles/htdocs/ISST-G16/features/chromedriver')
+    service = ChromeService(executable_path=r'C:\xampp\htdocs\ISST-G16\features\chromedriver')
     # chrome_options = Options()
     # chrome_options.add_argument("start-maximized")
     web = "http://localhost/ISST-G16/"
