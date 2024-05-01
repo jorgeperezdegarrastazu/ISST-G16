@@ -1,4 +1,3 @@
-com/nutriapp/repository/JpaRepository.class
 com/nutriapp/controller/HomeController.class
 com/nutriapp/Application.class
 com/nutriapp/model/User.class
