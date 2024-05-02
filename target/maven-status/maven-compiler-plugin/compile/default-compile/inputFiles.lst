@@ -2,4 +2,5 @@
 /Applications/XAMPP/xamppfiles/htdocs/ISST-G16/src/main/java/com/nutriapp/repository/UserRepository.java
 /Applications/XAMPP/xamppfiles/htdocs/ISST-G16/src/main/java/com/nutriapp/model/User.java
 /Applications/XAMPP/xamppfiles/htdocs/ISST-G16/src/main/java/com/nutriapp/Application.java
-/Applications/XAMPP/xamppfiles/htdocs/ISST-G16/src/main/java/com/nutriapp/controller/HomeController.java
+/Applications/XAMPP/xamppfiles/htdocs/ISST-G16/src/main/java/com/nutriapp/config/MyAppConfig.java
+/Applications/XAMPP/xamppfiles/htdocs/ISST-G16/src/main/java/com/nutriapp/controller/WebController.java

@@ -5,16 +5,16 @@
     <title>NutriApp</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="apple-touch-icon" href="/img/apple-icon.png">
     
     
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/templatemo.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/templatemo.css">
+    <link rel="stylesheet" href="/css/custom.css">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/css/fontawesome.min.css">
 
 </head>
 
@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index_usuario.html">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="/index_usuario/{userId}">
                 NutriApp
             </a>
 
@@ -35,16 +35,16 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index_usuario.html">Principal</a>
+                            <a class="nav-link" href="/index_usuario/{userId}">Principal</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="comidas.html">Tus comidas</a>
+                            <a class="nav-link" href="/index_usuario/{userId}/comidas">Tus comidas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="ejercicios.html">Tus Ejercicios</a>
+                            <a class="nav-link" href="/index_usuario/{userId}/ejercicios">Tus Ejercicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="datos_usuario.html">Tus Datos</a>
+                            <a class="nav-link" href="/index_usuario/{userId}/datos">Tus Datos</a>
                         </li>
                     </ul>
                 </div>
@@ -78,7 +78,7 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/img/barra_pasos.png" alt="" style="max-width: 65%;margin-left: 13%;">
+                            <img class="img-fluid" src="/img/barra_pasos.png" alt="" style="max-width: 65%;margin-left: 13%;">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
@@ -87,7 +87,7 @@
                                 <p>
                                     Aquí puede ver tu último recorrido:
                                 </p>
-                                <img src="./assets/img/recorrido.png" style="max-width: 100%;">
+                                <img src="/img/recorrido.png" style="max-width: 100%;">
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="./assets/img/calculadora-de-calorias.png" alt="" style="max-width: 65%;margin-left: 13%;">
+                        <img class="img-fluid" src="/img/calculadora-de-calorias.png" alt="" style="max-width: 65%;margin-left: 13%;">
                         
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
@@ -124,7 +124,7 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="./assets/img/calorias-quemadas.png" alt="" style="max-width: 65%;margin-left: 13%;">
+                        <img class="img-fluid" src="/img/calorias-quemadas.png" alt="" style="max-width: 65%;margin-left: 13%;">
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
@@ -219,7 +219,7 @@
 
         // Función para cargar los datos de recipes.json y agregar las opciones al selector
         function cargarAlimentos() {
-            fetch('./assets/recipes.json')
+            fetch('.//recipes.json')
                 .then(response => response.json())
                 .then(data => {
                     // Limpiar opciones anteriores
@@ -246,7 +246,7 @@
 
         // Función para cargar los datos de recipes.json y agregar las opciones al selector
         function cargarDeportes() {
-            fetch('./assets/sports.json')
+            fetch('.//sports.json')
                 .then(response => response.json())
                 .then(data => {
                     // Limpiar opciones anteriores
@@ -296,15 +296,15 @@
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light"><strong>Info</strong></h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="index_usuario.html">Home</a></li>
-                        <li><a class="text-decoration-none" href="comidas.html">Sobre Nosotros</a></li>
+                        <li><a class="text-decoration-none" href="/index_usuario/{userId}">Home</a></li>
+                        <li><a class="text-decoration-none" href="/index_usuario/{userId}/comidas">Sobre Nosotros</a></li>
                         <li><a class="text-decoration-none" href="shop_usuario.html">Suscripciones</a></li>
-                        <li><a class="text-decoration-none" href="datos_usuario.html">Contacto</a></li>
+                        <li><a class="text-decoration-none" href="/index_usuario/{userId}/datos">Contacto</a></li>
                     </ul>
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <img src="./assets/img/LOGO_ESCUELA.png" alt="Logo de la ETSIT" style="width: 110%; height: auto; opacity:0.8">
+                    <img src="/img/LOGO_ESCUELA.png" alt="Logo de la ETSIT" style="width: 110%; height: auto; opacity:0.8">
                 </div>
 
 
@@ -346,15 +346,15 @@
     <!-- Footer -->
 
     <!-- Scripts de jQuery y Bootstrap -->
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <script src="/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
 
     <!-- Otros scripts relacionados con la plantilla y personalizados -->
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <script src="assets/js/formulario.js"></script>
-    <script src="assets/sql/registro.js"></script>
+    <script src="/js/templatemo.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/formulario.js"></script>
+    <script src="/sql/registro.js"></script>
 
 </body>
 
