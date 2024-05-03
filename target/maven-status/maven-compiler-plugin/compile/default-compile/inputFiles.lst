@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /Applications/XAMPP/xamppfiles/htdocs/ISST-G16/src/main/java/com/nutriapp/controller/UserController.java
 /Applications/XAMPP/xamppfiles/htdocs/ISST-G16/src/main/java/com/nutriapp/repository/UserRepository.java
 /Applications/XAMPP/xamppfiles/htdocs/ISST-G16/src/main/java/com/nutriapp/model/User.java
@@ -8,3 +9,11 @@
 /Applications/XAMPP/xamppfiles/htdocs/ISST-G16/src/main/java/com/nutriapp/config/SecurityConfig3.java
 /Applications/XAMPP/xamppfiles/htdocs/ISST-G16/src/main/java/com/nutriapp/config/CustomAuthenticationSuccessHandler.java
 /Applications/XAMPP/xamppfiles/htdocs/ISST-G16/src/main/java/com/nutriapp/controller/WebController.java
+=======
+C:\xampp\htdocs\ISST-G16\src\main\java\com\nutriapp\repository\UserRepository.java
+C:\xampp\htdocs\ISST-G16\src\main\java\com\nutriapp\config\MyAppConfig.java
+C:\xampp\htdocs\ISST-G16\src\main\java\com\nutriapp\model\User.java
+C:\xampp\htdocs\ISST-G16\src\main\java\com\nutriapp\controller\UserController.java
+C:\xampp\htdocs\ISST-G16\src\main\java\com\nutriapp\Application.java
+C:\xampp\htdocs\ISST-G16\src\main\java\com\nutriapp\controller\WebController.java
+>>>>>>> e357e15048dfff7715998d2d1269665c7bfc7486

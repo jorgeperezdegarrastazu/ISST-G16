@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com/nutriapp/config/SecurityConfig3.class
 com/nutriapp/config/SecurityConfig.class
 com/nutriapp/controller/UserController.class
@@ -8,3 +9,11 @@ com/nutriapp/config/MyAppConfig.class
 com/nutriapp/repository/UserRepository.class
 com/nutriapp/config/CustomAuthenticationSuccessHandler.class
 com/nutriapp/controller/WebController.class
+=======
+com\nutriapp\repository\UserRepository.class
+com\nutriapp\controller\UserController.class
+com\nutriapp\config\MyAppConfig.class
+com\nutriapp\Application.class
+com\nutriapp\controller\WebController.class
+com\nutriapp\model\User.class
+>>>>>>> e357e15048dfff7715998d2d1269665c7bfc7486
