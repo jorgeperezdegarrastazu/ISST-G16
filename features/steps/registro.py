@@ -31,23 +31,25 @@ def step_impl(self):
 
 
 
-# @step('click on {xpath}')
-# def sept_impl(self, xpath):
-#     button_xpath = data[f'{xpath}']
-#     button = self.driver.find_element(By.XPATH, button_xpath)
-#     wait = WebDriverWait(self.driver, 10)
-#     element = wait.until(EC.presence_of_element_located((By.XPATH, button_xpath)))
-#     button.click()
-#     time.sleep(2)
+@step("click on '{xpath}'")
+def sept_impl(self, xpath):
+     button_xpath = data[f'{xpath}']
+     button = self.driver.find_element(By.XPATH, button_xpath)
+     wait = WebDriverWait(self.driver, 10)
+     element = wait.until(EC.presence_of_element_located((By.XPATH, button_xpath)))
+     button.click()
+     time.sleep(2)
 
 
 
-# @step("Write on '{xpath}'")
-# def step_impl(self):
-#      busqueda = self.driver.find_element(By.XPATH, search_bar_xpath)
-#      busqueda.send_keys('skirt')
-#      busqueda.send_keys(Keys.ENTER)
-#      time.sleep(2)
+@step("Write on '{caja_xpath}' the words '{palabra_xpath}")
+def step_impl(self, caja_xpath, palabra_xpath):
+    caja = data[f'{caja_xpath}']
+    palabra = data[f'{palabra_xpath}']
+    busqueda = self.driver.find_element(By.XPATH, caja)
+    busqueda.send_keys(palabra)
+    busqueda.send_keys(Keys.ENTER)
+    time.sleep(2)
 
 
 @step("Write on login")
