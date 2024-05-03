@@ -1,5 +1,18 @@
 {
     "registrate": "//*[@id='templatemo_main_nav']/div[2]/a/span/strong",
     "login_box": "//*[@id='login-form']/input[1]",
-    "password_box": "//*[@id='login-form']/input[2]"
+    "password_box": "//*[@id='login-form']/input[2]",
+    "nombre": "//*[@id='register-form']/input[1]",
+    "surname":"//*[@id='register-form']/input[2]",
+    "peso":"//*[@id='register-form']/input[3]",
+    "altura": "//*[@id='register-form']/input[4]",
+    "edad": "//*[@id='register-form']/input[5]",
+    "mail": "//*[@id='register-form']/input[6]",
+    "username":"//*[@id='register-form']/input[7]",
+    "password":"//*[@id='register-form']/input[8]",
+    "caloriasconsumidas": "//*[@id='nuevas-calorias-consumidas']",
+    "añadir": "//*[@id='agregar-calorias-consumidas']",
+    "caloriasquemadas": "//*[@id='nuevas-calorias-quemadas']",
+    "añadir1":"//*[@id='agregar-calorias-quemadas']"
+
 }
