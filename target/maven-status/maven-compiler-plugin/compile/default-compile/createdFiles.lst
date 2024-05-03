@@ -1,5 +1,6 @@
-com/nutriapp/repository/JpaRepository.class
-com/nutriapp/controller/HomeController.class
+com/nutriapp/controller/UserController.class
 com/nutriapp/Application.class
 com/nutriapp/model/User.class
+com/nutriapp/config/MyAppConfig.class
 com/nutriapp/repository/UserRepository.class
+com/nutriapp/controller/WebController.class

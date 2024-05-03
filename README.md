@@ -6,43 +6,8 @@ Pondremos a su disposición dietas y ejercicios recomendados, retos mensuales y 
 
 
 ######  IMPORTANTE  ##############################################################
-Es necesario instalar XAMPP 8.2.4-0 (https://sourceforge.net/projects/xampp/files/). Basta con seguir los pasos e instalarlo como una aplicación común. 
-
-1)  Al abrirla, nos vamos a "Manage Servers" e iniciamos todo.
-2)  Movemos nuestra carpeta del proyecto a XAMPP/htdocs. En mac, XAMPP se encuentra en la carpeta de Aplicaciones.
-3)  Abrimos el navegador y escribimos localhost/phpmyadmin, ahí deberás crear una BBDD de nombre "usuarios" y nombre de la tabla "usuarios_db". ***Se explica más abajo
-4)  Ya podrás acceder a la página mediante un servidor local escribiendo en el buscador http://localhost/ISST-G16
-
-CREACIÓN DE BBDD Y TABLAS
-Necesitaremos crear una BBDD con los datos del los usuarios. Para ello:
-
-1)  Nos iremos a localhost/phpmyadmin y en la parte de la izquierda le damos a añadir. Es necesario llamarla "usuarios".
-2)  Necesitamos crear 2 tablas. Una con los datos del usuario y otra enlazada a la primeras con sus calorias y pasos. Para ello habrá que meter estas dos querys en la parte de arriba donde pone "SQL" (primero una y luego otra, no a la vez). Despues de meter la query hay que puylsar en "continuar".
-
-CREATE TABLE usuarios_db (
-  id INT(11) NOT NULL AUTO_INCREMENT,
-  nombre VARCHAR(50) NOT NULL,
-  apellido VARCHAR(50) NOT NULL,
-  peso DECIMAL(5,2) NOT NULL,
-  altura INT(11) NOT NULL,
-  edad INT(11) NOT NULL,
-  email VARCHAR(100) NOT NULL,
-  username VARCHAR(50) NOT NULL,
-  contrasena VARCHAR(255) NOT NULL,
-  PRIMARY KEY (id)
-);
-
-CREATE TABLE calorias_pasos (
-  id INT(11) NOT NULL AUTO_INCREMENT,
-  calorias_quemadas INT(11) NOT NULL,
-  calorias_consumidas INT(11) NOT NULL,
-  calorias_totales INT(11) NOT NULL,
-  pasos INT(11) NOT NULL,
-  FOREIGN KEY (id) REFERENCES usuarios_db(id)
-);
-
-3)  En principio ya debería estar todo bien creado. De ser así, podrías registrar tu primer usuario.
-
+A la hora de iniciar Spring-boot con el comando "./mvnw clean install package spring-boot:run
+-DskipTests=true", si busca "localhost:8080" en el navegador verá que le muesdtra un formulario. El usuario es "user" y la contraseña aparece en la terminal unas 10 lineas arriba. Por ejemplo: (Using generated security password: ce156601-900e-4cb8-8792-fdffae77c232)
 ######  IMPORTANTE  ##############################################################
 
 ###### IMPORTANTE PARA PRUEBAS #######################################################################################################
