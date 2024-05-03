@@ -1,6 +1,10 @@
+com/nutriapp/config/SecurityConfig3.class
+com/nutriapp/config/SecurityConfig.class
 com/nutriapp/controller/UserController.class
+com/nutriapp/controller/ErrorController.class
 com/nutriapp/Application.class
 com/nutriapp/model/User.class
 com/nutriapp/config/MyAppConfig.class
 com/nutriapp/repository/UserRepository.class
+com/nutriapp/config/CustomAuthenticationSuccessHandler.class
 com/nutriapp/controller/WebController.class

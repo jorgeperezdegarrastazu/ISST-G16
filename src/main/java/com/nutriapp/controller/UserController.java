@@ -1,21 +1,19 @@
 package com.nutriapp.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.nutriapp.model.User;
 import com.nutriapp.repository.UserRepository;
 
-@RestController
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
+@Controller
 @RequestMapping("/users")
 public class UserController {
 
@@ -23,44 +21,85 @@ public class UserController {
     private UserRepository userRepository;
 
     // Endpoint para obtener todos los usuarios
-    @GetMapping("/")
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    // @GetMapping("/")
+    // public List<User> getAllUsers() {
+    //     return userRepository.findAll();
+    // }
+
+    @PostMapping("/index_usuario/{id}")
+    public String processForm(HttpServletRequest request, HttpSession session) {
+    String action = request.getParameter("action");
+    
+    if ("register".equals(action)) {
+        return registerUser(request);
+    } else if ("login".equals(action)) {
+        return loginUser(request, session);
+    }
+    return "";
     }
 
-    @PostMapping("/")
-    public ResponseEntity<String> createUser(@RequestBody User user) {
+    private String registerUser(HttpServletRequest request) {
+        // Lógica para manejar la solicitud de registro
+        String nombre = request.getParameter("nombre");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String email = request.getParameter("email");
+        int peso = Integer.parseInt(request.getParameter("peso"));
+        int altura = Integer.parseInt(request.getParameter("altura"));
+        int edad = Integer.parseInt(request.getParameter("edad"));
+        
         // Verificar si el usuario ya existe
-        if (userRepository.existsByUsername(user.getUsername())) {
-            return ResponseEntity.badRequest().body("El nombre de usuario ya está en uso");
+        if (userRepository.existsByUsername(username)) {
+            // Si el nombre de usuario ya está en uso, redirigir de vuelta a la página de inicio con un mensaje de error
+            return "redirect:/?error=El nombre de usuario ya está en uso";
         }
-        if (userRepository.existsByEmail(user.getEmail())) {
-            return ResponseEntity.badRequest().body("El correo electrónico ya está en uso");
+        if (userRepository.existsByEmail(email)) {
+            // Si el correo electrónico ya está en uso, redirigir de vuelta a la página de inicio con un mensaje de error
+            return "redirect:/?error=El correo electrónico ya está en uso";
         }
-
+    
+        // Crear un nuevo objeto User
+        User user = new User();
+        user.setNombre(nombre);
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.setPeso(peso);
+        user.setAltura(altura);
+        user.setEdad(edad);
+    
         // Guardar el usuario en la base de datos
         userRepository.save(user);
-
-        return ResponseEntity.ok("Usuario registrado exitosamente");
+    
+        // Redirigir al usuario a la página de inicio de sesión
+        return "redirect:/index_usuario/" + user.getId();
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestParam String username, @RequestParam String password) {
-        // Buscar al usuario por nombre de usuario
-        Optional<User> userOptional = userRepository.findByUsername(username);
-        if (userOptional.isEmpty()) {
-            return ResponseEntity.badRequest().body("Nombre de usuario no válido");
-        }
-
-        User user = userOptional.get();
-        // Verificar la contraseña
-        if (!user.getPassword().equals(password)) {
-            return ResponseEntity.badRequest().body("Contraseña incorrecta");
-        }
-
-        // Autenticación exitosa
-        // Puedes agregar lógica aquí para iniciar sesión, como establecer una sesión de usuario
-
-        return ResponseEntity.ok("Inicio de sesión exitoso");
+private String loginUser(HttpServletRequest request, HttpSession session) {
+    // Lógica para manejar la solicitud de inicio de sesión
+    String username = request.getParameter("username");
+    String password = request.getParameter("password");
+    
+    // Buscar al usuario por nombre de usuario
+    Optional<User> userOptional = userRepository.findByUsername(username);
+    if (userOptional.isEmpty()) {
+        // Si el nombre de usuario no es válido, redirigir de vuelta a la página de inicio con un mensaje de error
+        return "redirect:/?error=Nombre de usuario no válido";
     }
+
+    User user = userOptional.get();
+    // Verificar la contraseña
+    if (!user.getPassword().equals(password)) {
+        // Si la contraseña es incorrecta, redirigir de vuelta a la página de inicio con un mensaje de error
+        return "redirect:/?error=Contraseña incorrecta";
+    }
+
+    // Autenticación exitosa
+    // Puedes agregar lógica aquí para iniciar sesión, como establecer una sesión de usuario
+
+    // Redirigir al usuario a la página de inicio del usuario con su ID
+    //return "redirect:/index_usuario/" + user.getId();
+    return "redirect:/index_usuario";
+}
+
 }

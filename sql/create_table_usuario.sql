@@ -7,5 +7,9 @@ CREATE TABLE usuario (
     email VARCHAR(100) UNIQUE NOT NULL,
     peso INT,
     altura INT,
-    premium BOOLEAN
+    premium BOOLEAN,
+    calorias_consumidas INT,
+    calorias_quemadas INT,
+    calorias_totales INT,
+    pasos INT
 );
