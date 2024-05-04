@@ -1,5 +1,8 @@
 package com.nutriapp.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -207,6 +210,29 @@ public ResponseEntity<?> actualizarCaloriasEnBD(@RequestBody CaloriasRequest req
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }
 }
+
+@GetMapping("/calorias")
+public ResponseEntity<?> obtenerCaloriasUsuario(HttpSession session) {
+    Long userId = (Long) session.getAttribute("id");
+    if (userId != null) {
+        User user = userService.getUserById(userId);
+        // Obtener los datos de calorías del usuario
+        int totalCaloriasConsumidas = user.getCaloriasConsumidas();
+        int totalCaloriasQuemadas = user.getCaloriasQuemadas();
+        int totalCalorias = totalCaloriasConsumidas - totalCaloriasQuemadas;
+
+        // Construir el objeto JSON de respuesta
+        Map<String, Integer> caloriasData = new HashMap<>();
+        caloriasData.put("totalCaloriasConsumidas", totalCaloriasConsumidas);
+        caloriasData.put("totalCaloriasQuemadas", totalCaloriasQuemadas);
+        caloriasData.put("totalCalorias", totalCalorias);
+
+        return ResponseEntity.ok(caloriasData);
+    } else {
+        return ResponseEntity.notFound().build();
+    }
+}
+
 
     
 }

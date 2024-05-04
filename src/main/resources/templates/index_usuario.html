@@ -18,6 +18,33 @@
 
 </head>
 
+<!-- Script JavaScript para obtener y mostrar los datos de calorías del usuario -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const userId = getUserId(); // Obtener el ID del usuario
+
+        fetch(`/calorias`) // Hacer la solicitud al servidor para obtener los datos de calorías del usuario
+            .then(response => response.json())
+            .then(data => {
+                // Actualizar los elementos HTML con los datos recibidos del servidor
+                document.getElementById('total-calorias').textContent = data.totalCalorias;
+                document.getElementById('total-calorias-consumidas').textContent = data.totalCaloriasConsumidas;
+                document.getElementById('total-calorias-quemadas').textContent = data.totalCaloriasQuemadas;
+            })
+            .catch(error => console.error('Error al obtener los datos de calorías del usuario:', error));
+    });
+
+    // Función para obtener el ID del usuario de alguna manera
+    function getUserId() {
+        // Implementa la lógica para obtener el ID del usuario aquí
+        // Puede ser a partir de una cookie, una sesión, o como parte de la URL, dependiendo de tu aplicación
+        // Por ejemplo, si el ID del usuario está en la URL como /usuario/{id}/datos, puedes obtenerlo de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('id');
+    }
+</script>
+
+
 
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
@@ -103,7 +130,7 @@
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
-                            <p class="h1 text-success" id="total-calorias-consumidas" th:text="${calorias_consumidas}"><strong>0</strong></p>
+                            <p class="h1 text-success" id="total-calorias-consumidas"><strong>0</strong></p>
                             <p class="h1 text-success"><strong>Calorías Consumidas</strong></p>
                             <h3 class="h2">Si has comido algo, ¡apúntalo!</h3>
                             <div class="form-group">
@@ -129,7 +156,7 @@
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
-                            <p class="h1 text-success" id="total-calorias-quemadas" th:text="${calorias_quemadas}"><strong>0</strong></p>
+                            <p class="h1 text-success" id="total-calorias-quemadas"><strong>0</strong></p>
                             <p class="h1 text-success"><strong>Calorías Quemadas</strong></p>
                             <h3 class="h2">Si has realizado algún ejercicio, ¡apúntalo!</h3>
                             <div class="form-group">
@@ -165,7 +192,7 @@
     <div class="row">
         <div class="col">
             <h1 class="h2 text-success">Total de calorías:</h1>
-            <p class="h2 text-success"  id="total-calorias" th:text="${caloriasConsumidas}"><strong>0</strong></p>
+            <p class="h2 text-success"  id="total-calorias"><strong>0</strong></p>
         </div>
     </div>
 </div>
