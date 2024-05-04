@@ -78,7 +78,8 @@ public class UserController {
         userRepository.save(user);
     
         // Redirigir al usuario a la página de inicio de sesión
-        return "redirect:/index_usuario/" + user.getId();
+        //return "redirect:/index_usuario/" + user.getId();
+        return "redirect:/index_usuario";
     }
 
 private String loginUser(HttpServletRequest request, HttpSession session) {
@@ -102,7 +103,7 @@ private String loginUser(HttpServletRequest request, HttpSession session) {
 
     // Autenticación exitosa
     // Puedes agregar lógica aquí para iniciar sesión, como establecer una sesión de usuario
-
+    //session.setAttribute("userId", user.getId());
     // Redirigir al usuario a la página de inicio del usuario con su ID
     //return "redirect:/index_usuario/" + user.getId();
     return "redirect:/index_usuario";

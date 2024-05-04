@@ -49,10 +49,23 @@ public class WebController {
     //     return "index_usuario";
     // }
 
-    @GetMapping("/index_usuario")
-    public String indexUsuario() {
-        return "index_usuario";
-    }
+     @GetMapping("/index_usuario")
+     public String indexUsuario() {
+         return "index_usuario";
+     }
+
+    // @GetMapping("/index_usuario")
+    // public String indexUsuario(Model model, HttpSession session) {
+    //     Long userId = (Long) session.getAttribute("userId");
+    //     if (userId != null) {
+    //         model.addAttribute("id", userId.toString());
+    //         return "redirect:/index_usuario";
+    //     } else {
+    //         // Manejar el caso en que no se encuentra el ID del usuario en la sesión
+    //         return "redirect:/"; // O redirigir a alguna otra página en caso de error
+    //     }
+    // }
+
 
 
     @GetMapping("/index_usuario/{id}/datos")
@@ -90,14 +103,21 @@ public class WebController {
     @PostMapping("/login")
     public String getUsers(HttpServletRequest request, HttpSession session) {
         //UserController userController = new UserController();
+        
         return userController.processForm(request, session);
+        //userController.processForm(request, session);
+        // return indexUsuario(null, session);
+        //return indexUsuario();
     }
 
     @PostMapping("/register")
-    public String createUser(HttpServletRequest request) {
+    public String createUser(HttpServletRequest request,  HttpSession session) {
         //userRepository.save(user);
 
         //UserController userController = new UserController();
-        return userController.processForm(request, request.getSession());
+        return userController.processForm(request, session);
+        //userController.processForm(request, session);
+        // return indexUsuario(null, session);
+        //return indexUsuario();
     }
 }
