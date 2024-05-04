@@ -20,17 +20,17 @@ public class User {
     private boolean premium;
 
 
-    // Constructor
-    public User() {
-        // Generar manualmente el ID al momento de crear una nueva instancia
-        this.id = generateid();
-    }
+     // Constructor
+     public User() {
+         // Generar manualmente el ID al momento de crear una nueva instancia
+         this.id = generateid();
+     }
     
-    // Método para generar manualmente el ID
-    private Long generateid() {
-        Random random = new Random();
-        return random.nextLong();
-    }
+      // Método para generar manualmente el ID
+      private Long generateid() {
+          Random random = new Random();
+          return random.nextLong();
+      }
 
 
     // Getters
