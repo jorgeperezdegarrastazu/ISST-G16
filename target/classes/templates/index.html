@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>NutriApp</title>
@@ -104,7 +104,7 @@
             </div>
             
             <div id="login-panel" style="display: block;"></div>
-                <form id="login-form" method="POST" action="/index_usuario">
+                <form id="login-form" method="POST" action="/login">
                     <input type="hidden" name="action" value="login">
                     <input class="modal-content modal-body border-0 p-0" type="text" name="username" placeholder="Nombre de usuario" >
                     <input class="modal-content modal-body border-0 p-0" type="password" name="password" placeholder="Contraseña" >

@@ -1,13 +1,32 @@
 {
     "version": "0.2.0",
     "configurations": [
-      
       {
         "type": "chrome",
         "request": "launch",
         "name": "localhost",
         "url": "http://localhost:8080",
         "webRoot": "${workspaceFolder}"
+      },
+      {
+        "type": "java",
+        "name": "Spring Boot-Application<ISST-G16_ab9318de>",
+        "request": "launch",
+        "cwd": "${workspaceFolder}",
+        "mainClass": "main.java.com.nutriapp.Application",
+        "projectName": "ISST-G16_ab9318de",
+        "args": "",
+        "envFile": "${workspaceFolder}/.env"
+      },
+      {
+        "type": "java",
+        "name": "Spring Boot-Application<sprint3>",
+        "request": "launch",
+        "cwd": "${workspaceFolder}",
+        "mainClass": "com.nutriapp.Application",
+        "projectName": "sprint3",
+        "args": "",
+        "envFile": "${workspaceFolder}/.env"
       }
     ]
   }

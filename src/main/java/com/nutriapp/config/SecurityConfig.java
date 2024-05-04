@@ -31,7 +31,7 @@ public class SecurityConfig {
                 /// Configurar el manejador de autenticación exitosa
                 .formLogin(login -> login
                 .successHandler(customAuthenticationSuccessHandler)
-                .loginPage("/") // Ruta de la página de inicio de sesión
+                .loginPage("/index_usuario") // Ruta de la página de inicio de sesión
                 .permitAll())
                 // Deshabilitamos protección X-Frame-Options (habilitada por defecto)
                 .headers(headers -> headers

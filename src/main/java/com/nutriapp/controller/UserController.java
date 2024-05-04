@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nutriapp.model.User;
@@ -14,11 +13,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("")
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     // Endpoint para obtener todos los usuarios
     // @GetMapping("/")
@@ -26,17 +30,19 @@ public class UserController {
     //     return userRepository.findAll();
     // }
 
-    @PostMapping("/index_usuario/{id}")
+    //@PostMapping("/login")
     public String processForm(HttpServletRequest request, HttpSession session) {
     String action = request.getParameter("action");
     
-    if ("register".equals(action)) {
-        return registerUser(request);
-    } else if ("login".equals(action)) {
-        return loginUser(request, session);
+        if ("register".equals(action)) {
+            return registerUser(request);
+        } else if ("login".equals(action)) {
+            return loginUser(request, session);
+        }
+        return "";        
     }
-    return "";
-    }
+
+    
 
     private String registerUser(HttpServletRequest request) {
         // Lógica para manejar la solicitud de registro

@@ -7,14 +7,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.nutriapp.model.User;
 import com.nutriapp.repository.UserRepository;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class WebController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserController userController;
+
 
     // @GetMapping("/")
     // public String index() {
@@ -37,9 +43,14 @@ public class WebController {
     }
 
 
+    // @GetMapping("/index_usuario")
+    // public String indexUsuario(@PathVariable String id, Model model) {
+    //     model.addAttribute("id", id);
+    //     return "index_usuario";
+    // }
+
     @GetMapping("/index_usuario")
-    public String indexUsuario(@PathVariable String id, Model model) {
-        model.addAttribute("id", id);
+    public String indexUsuario() {
         return "index_usuario";
     }
 
@@ -62,16 +73,31 @@ public class WebController {
         return "ejercicios";
     }
 
-    @GetMapping("/users")
-    public String getUsers(Model model) {
-        Iterable<User> users = userRepository.findAll();
-        model.addAttribute("users", users);
-        return "users";
+    // @GetMapping("/login")
+    // public String getUsers(Model model) {
+    //     Iterable<User> users = userRepository.findAll();
+    //     model.addAttribute("users", users);
+    //     UserController.processForm(login)
+    //     return "index_usuario";
+    // }
+
+    // @PostMapping("/register")
+    // public String createUser(User user) {
+    //     userRepository.save(user);
+    //     return "index_usuario";
+    // }
+
+    @PostMapping("/login")
+    public String getUsers(HttpServletRequest request, HttpSession session) {
+        //UserController userController = new UserController();
+        return userController.processForm(request, session);
     }
 
-    @PostMapping("/users")
-    public String createUser(User user) {
-        userRepository.save(user);
-        return "redirect:/users";
+    @PostMapping("/register")
+    public String createUser(HttpServletRequest request) {
+        //userRepository.save(user);
+
+        //UserController userController = new UserController();
+        return userController.processForm(request, request.getSession());
     }
 }
