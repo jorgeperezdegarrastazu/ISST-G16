@@ -1,7 +1,5 @@
 package com.nutriapp.model;
 
-import java.util.Random;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -18,19 +16,22 @@ public class User {
     private int peso;
     private int altura;
     private boolean premium;
+    private int calorias_consumidas;
+    private int calorias_quemadas;
+    private int calorias_totales;
 
 
-     // Constructor
-     public User() {
-         // Generar manualmente el ID al momento de crear una nueva instancia
-         this.id = generateid();
-     }
+    //  // Constructor
+    //  public User() {
+    //      // Generar manualmente el ID al momento de crear una nueva instancia
+    //      this.id = generateid();
+    //  }
     
-      // Método para generar manualmente el ID
-      private Long generateid() {
-          Random random = new Random();
-          return random.nextLong();
-      }
+    //   // Método para generar manualmente el ID
+    //   private Long generateid() {
+    //       Random random = new Random();
+    //       return random.nextLong();
+    //   }
 
 
     // Getters
@@ -106,4 +107,36 @@ public class User {
     public void setPremium(boolean premium) {
         this.premium = premium;
     }
+
+
+    // Getters y setters para las calorías consumidas
+    public int getCaloriasConsumidas() {
+        return calorias_consumidas;
+    }
+
+    public void setCaloriasConsumidas(int caloriasConsumidas) {
+        this.calorias_consumidas = caloriasConsumidas;
+    }
+
+    // Getters y setters para las calorías quemadas
+    public int getCaloriasQuemadas() {
+        return calorias_quemadas;
+    }
+
+    public void setCaloriasQuemadas(int caloriasQuemadas) {
+        this.calorias_quemadas = caloriasQuemadas;
+    }
+
+    // Getters y setters para las calorías totales
+    public int getCaloriasTotales() {
+        return calorias_totales;
+    }
+
+    public void setCaloriasTotales(int caloriasTotales) {
+        this.calorias_totales = caloriasTotales;
+    }
+
+    // Los demás getters y setters para las propiedades restantes...
+
 }
+

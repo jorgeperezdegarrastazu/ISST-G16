@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="/index_usuario/{id}">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="/index_usuario">
                 NutriApp
             </a>
 
@@ -41,13 +41,14 @@
                             <a class="nav-link" href="/index_usuario/{id}/comidas">Tus comidas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/index_usuario/{id}/ejercicios">Tus Ejercicios</a>
+                            <a class="nav-link" href="/ejercicios">Tus Ejercicios</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/index_usuario/{id}/datos">Tus Datos</a>
                         </li>
                     </ul>
                 </div>
+                
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
                         <div class="input-group">
@@ -102,7 +103,7 @@
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
-                            <p class="h1 text-success" id="total-calorias-consumidas"><strong>0</strong></p>
+                            <p class="h1 text-success" id="total-calorias-consumidas" th:text="${calorias_consumidas}"><strong>0</strong></p>
                             <p class="h1 text-success"><strong>Calorías Consumidas</strong></p>
                             <h3 class="h2">Si has comido algo, ¡apúntalo!</h3>
                             <div class="form-group">
@@ -128,7 +129,7 @@
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
-                            <p class="h1 text-success" id="total-calorias-quemadas"><strong>0</strong></p>
+                            <p class="h1 text-success" id="total-calorias-quemadas" th:text="${calorias_quemadas}"><strong>0</strong></p>
                             <p class="h1 text-success"><strong>Calorías Quemadas</strong></p>
                             <h3 class="h2">Si has realizado algún ejercicio, ¡apúntalo!</h3>
                             <div class="form-group">
@@ -164,7 +165,7 @@
     <div class="row">
         <div class="col">
             <h1 class="h2 text-success">Total de calorías:</h1>
-            <p class="h2 text-success"  id="total-calorias"><strong>0</strong></p>
+            <p class="h2 text-success"  id="total-calorias" th:text="${caloriasConsumidas}"><strong>0</strong></p>
         </div>
     </div>
 </div>
@@ -198,6 +199,7 @@
             totalCaloriasConsumidas += caloriasConsumidas;
             totalCalorias += caloriasConsumidas;
             actualizarTotales();
+            actualizarCaloriasEnBD(0, caloriasConsumidas);
         }
 
         // Función para restar las calorías quemadas al total
@@ -206,7 +208,34 @@
             totalCaloriasQuemadas += caloriasQuemadas;
             totalCalorias -= caloriasQuemadas;
             actualizarTotales();
+            actualizarCaloriasEnBD(1, caloriasQuemadas);
         }
+
+         // Función para enviar la solicitud al servidor para actualizar las calorías en la base de datos
+         function actualizarCaloriasEnBD(tipo, cantidad) {
+             // Reemplaza 'url' con la URL de tu endpoint en el backend para actualizar las calorías
+             const url = '/actualizar_calorias';
+             const data = {
+                 tipo: tipo, // Puedes usar un número para representar el tipo de calorías: 0 para consumidas, 1 para quemadas, etc.
+                 cantidad: cantidad // La cantidad de calorías que se van a actualizar
+             };
+             fetch(url, {
+                 method: 'POST',
+                 headers: {
+                     'Content-Type': 'application/json'
+                 },
+                 body: JSON.stringify(data)
+             })
+             .then(response => {
+                 if (response.ok) {
+                     console.log('Calorías actualizadas en la base de datos con éxito');
+                 } else {
+                     console.error('Error al actualizar calorías en la base de datos');
+                 }
+             })
+             .catch(error => console.error('Error al enviar la solicitud al servidor:', error));
+         }
+
 
         // Agregar eventos de clic a los botones "Añadir"
         botonConsumidas.addEventListener('click', sumarCaloriasConsumidas);
@@ -296,10 +325,10 @@
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light"><strong>Info</strong></h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="/index_usuario/{id}">Home</a></li>
-                        <li><a class="text-decoration-none" href="/index_usuario/{id}/comidas">Sobre Nosotros</a></li>
+                        <li><a class="text-decoration-none" href="/index_usuario">Home</a></li>
+                        <li><a class="text-decoration-none" href="/index_usuario/comidas">Sobre Nosotros</a></li>
                         <li><a class="text-decoration-none" href="shop_usuario.html">Suscripciones</a></li>
-                        <li><a class="text-decoration-none" href="/index_usuario/{id}/datos">Contacto</a></li>
+                        <li><a class="text-decoration-none" href="/index_usuario/datos">Contacto</a></li>
                     </ul>
                 </div>
 

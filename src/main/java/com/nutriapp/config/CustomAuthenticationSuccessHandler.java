@@ -5,8 +5,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import com.nutriapp.model.User;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,8 +15,8 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         // Obtener ID del usuario autenticado (supongamos que lo obtienes de UserDetails)
-        Long idLong = ((User) authentication.getPrincipal()).getId(); // Obtener el ID como Long
-        String id = idLong.toString(); // Convertir el Long a String
+        //int idLong = ((User) authentication.getPrincipal()).getId(); // Obtener el ID como Long
+        //int id = idLong.toString(); // Convertir el Long a String
 
 
         // Redirigir al usuario a la página con su ID

@@ -86,7 +86,7 @@ private String loginUser(HttpServletRequest request, HttpSession session) {
     // Lógica para manejar la solicitud de inicio de sesión
     String username = request.getParameter("username");
     String password = request.getParameter("password");
-    
+   
     // Buscar al usuario por nombre de usuario
     Optional<User> userOptional = userRepository.findByUsername(username);
     if (userOptional.isEmpty()) {
@@ -106,7 +106,9 @@ private String loginUser(HttpServletRequest request, HttpSession session) {
     //session.setAttribute("userId", user.getId());
     // Redirigir al usuario a la página de inicio del usuario con su ID
     //return "redirect:/index_usuario/" + user.getId();
-    return "redirect:/index_usuario";
+    //int userId =  session.getId();
+    session.setAttribute("id", user.getId());
+    return "redirect:/index_usuario/" + user.getId();
 }
 
 }

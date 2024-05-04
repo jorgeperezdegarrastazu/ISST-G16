@@ -1,13 +1,19 @@
 package com.nutriapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import com.nutriapp.model.User;
 import com.nutriapp.repository.UserRepository;
+import com.nutriapp.request.CaloriasRequest;
+import com.nutriapp.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -20,6 +26,9 @@ public class WebController {
 
     @Autowired
     private UserController userController;
+
+    @Autowired
+    private UserService userService;
 
 
     // @GetMapping("/")
@@ -42,6 +51,11 @@ public class WebController {
         return "contacto";
     }
 
+    @GetMapping("/ejercicios")
+    public String ejercicios() {
+        return "ejercicos";
+    }
+
 
     // @GetMapping("/index_usuario")
     // public String indexUsuario(@PathVariable String id, Model model) {
@@ -49,16 +63,41 @@ public class WebController {
     //     return "index_usuario";
     // }
 
-     @GetMapping("/index_usuario")
-     public String indexUsuario() {
-         return "index_usuario";
-     }
+    //  @GetMapping("/index_usuario")
+    //  public String indexUsuario() {
+    //      return "index_usuario";
+    //  }
+
+    @GetMapping("/index_usuario")
+    public String indexUsuario(Model model,HttpSession session) {
+        Long id = (Long) session.getAttribute("id");
+        Integer calorias_quemadas = (Integer) session.getAttribute("calorias_quemadas");
+        Integer calorias_consumidas = (Integer) session.getAttribute("calorias_consumidas");
+        Integer calorias_totales = (Integer) session.getAttribute("calorias_totales");
+
+        if (id != null) {
+            model.addAttribute("id", id);
+            // model.addAttribute("calorias_consumidas", user.getCaloriasConsumidas());
+            // model.addAttribute("calorias_quemadas", user.getCaloriasQuemadas());
+             model.addAttribute("calorias_consumidas", calorias_consumidas);
+             model.addAttribute("calorias_quemadas", calorias_quemadas);
+             model.addAttribute("calorias_totales", calorias_totales);
+            //return "redirect:/index_usuario/" + id;
+            return "index_usuario";
+        } else {
+            // Manejar el caso en que no se encuentra el ID del usuario en la sesión
+            return "redirect:/"; // O redirigir a alguna otra página en caso de error
+        }
+    }
+
+    
+
 
     // @GetMapping("/index_usuario")
     // public String indexUsuario(Model model, HttpSession session) {
-    //     Long userId = (Long) session.getAttribute("userId");
-    //     if (userId != null) {
-    //         model.addAttribute("id", userId.toString());
+    //     Long id = (Long) session.getAttribute("id");
+    //     if (id != null) {
+    //         model.addAttribute("id", id.toString());
     //         return "redirect:/index_usuario";
     //     } else {
     //         // Manejar el caso en que no se encuentra el ID del usuario en la sesión
@@ -69,22 +108,44 @@ public class WebController {
 
 
     @GetMapping("/index_usuario/{id}/datos")
-    public String datosUsuario(@PathVariable String id, Model model) {
-        // Lógica para la página de datos del usuario
-        return "datos_usuario";
+    public String datosUsuario(@PathVariable String id, Model model, HttpSession session) {
+        Long userId = (Long) session.getAttribute("id");
+        if (userId != null) {
+            model.addAttribute("id", userId);
+            // Lógica para la página de datos del usuario
+            return "datos_usuario";
+        } else {
+            // Manejar el caso en que no se encuentra el ID del usuario en la sesión
+            return "redirect:/"; // O redirigir a alguna otra página en caso de error
+        }
     }
     
     @GetMapping("/index_usuario/{id}/comidas")
-    public String comidasUsuario(@PathVariable String id, Model model) {
-        // Lógica para la página de comidas del usuario
-        return "comidas";
+    public String comidasUsuario(@PathVariable String id, Model model, HttpSession session) {
+        Long userId = (Long) session.getAttribute("id");
+        if (userId != null) {
+            model.addAttribute("id", userId);
+            // Lógica para la página de comidas del usuario
+            return "comidas";
+        } else {
+            // Manejar el caso en que no se encuentra el ID del usuario en la sesión
+            return "redirect:/"; // O redirigir a alguna otra página en caso de error
+        }
     }
     
-    @GetMapping("/index_usuario/{id}/ejercicios")
-    public String ejerciciosUsuario(@PathVariable String id, Model model) {
-        // Lógica para la página de ejercicios del usuario
-        return "ejercicios";
+    @GetMapping("/index_usuario/ejercicios")
+    public String ejerciciosUsuario(@PathVariable String id, Model model, HttpSession session) {
+        Long userId = (Long) session.getAttribute("id");
+        if (userId != null) {
+            model.addAttribute("id", userId);
+            // Lógica para la página de ejercicios del usuario
+            return "ejercicios";
+        } else {
+            // Manejar el caso en que no se encuentra el ID del usuario en la sesión
+            return "redirect:/"; // O redirigir a alguna otra página en caso de error
+        }
     }
+    
 
     // @GetMapping("/login")
     // public String getUsers(Model model) {
@@ -120,4 +181,32 @@ public class WebController {
         // return indexUsuario(null, session);
         //return indexUsuario();
     }
+
+
+@PostMapping("/actualizar_calorias")
+public ResponseEntity<?> actualizarCaloriasEnBD(@RequestBody CaloriasRequest request, HttpSession session) {
+    Long userId = (Long) session.getAttribute("id");
+    if (userId != null) {
+        User user = userService.getUserById(userId);
+        if (user != null) {
+            switch (request.getTipo()) {
+                case 0: // Consumidas
+                    userService.actualizarCaloriasConsumidas(user, request.getCantidad());
+                    break;
+                case 1: // Quemadas
+                    userService.actualizarCaloriasQuemadas(user, request.getCantidad());
+                    break;
+                default:
+                    return ResponseEntity.badRequest().build();
+            }
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    } else {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
+}
+
+    
 }
