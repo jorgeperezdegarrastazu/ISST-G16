@@ -164,8 +164,8 @@
                                 <button type="button" id="agregar-calorias-quemadas" class="btn btn-primary">Añadir</button>
                             </div>
                             <div class="form-group">
-                                <label for="ejercicios">Selecciona un ejercicio:</label>
-                                <select id="ejercicios" class="form-control"></select>
+                                <label for="sports">Selecciona un ejercicio:</label>
+                                <select id="sports" class="form-control"></select>
                                 <!-- <button type="button" id="obtener-alimentos" class="btn btn-primary mt-2">Obtener alimentos</button> -->
                             </div>
                             <div class="form-group">
@@ -273,19 +273,19 @@
     document.addEventListener('DOMContentLoaded', function () {
         const selectAlimentos = document.getElementById('alimentos');
 
-        // Función para cargar los datos de recipes.json y agregar las opciones al selector
+        // Función para cargar los datos del archivo recipes.json y agregar las opciones al selector
         function cargarAlimentos() {
-            fetch('.//recipes.json')
+            fetch('./ISST-G16/assets/recipes.json')
                 .then(response => response.json())
                 .then(data => {
                     // Limpiar opciones anteriores
                     selectAlimentos.innerHTML = '';
 
-                    // Iterar sobre los datos y agregar cada nombre de receta como opción en el selector
-                    data.forEach(recipe => {
+                    // Iterar sobre los datos y agregar cada nombre de alimento como opción en el selector
+                    data.forEach(alimento => {
                         const option = document.createElement('option');
-                        option.textContent = recipe.Name;
-                        option.value = recipe.Name; // Puedes ajustar esto según la estructura de datos de recipes.json
+                        option.textContent = alimento.Name;
+                        option.value = alimento.Name; // Puedes ajustar esto según la estructura de datos de recipes.json
                         selectAlimentos.appendChild(option);
                     });
                 })
@@ -296,13 +296,14 @@
         cargarAlimentos();
     });
 </script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const selectDeportes = document.getElementById('ejercicios');
+        const selectDeportes = document.getElementById('sports');
 
         // Función para cargar los datos de recipes.json y agregar las opciones al selector
         function cargarDeportes() {
-            fetch('.//sports.json')
+            fetch('./ISST-G16/assets/sports.json')
                 .then(response => response.json())
                 .then(data => {
                     // Limpiar opciones anteriores
