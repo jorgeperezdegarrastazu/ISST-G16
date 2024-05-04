@@ -56,7 +56,17 @@ public class WebController {
 
     @GetMapping("/ejercicios")
     public String ejercicios() {
-        return "ejercicos";
+        return "ejercicios";
+    }
+
+    @GetMapping("/comidas")
+    public String comidas() {
+        return "comidas";
+    }
+
+    @GetMapping("/datos_usuario")
+    public String datos_usuario() {
+        return "datos_usuario";
     }
 
 
