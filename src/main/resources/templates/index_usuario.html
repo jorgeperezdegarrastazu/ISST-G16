@@ -179,11 +179,8 @@
                                 <!-- <button type="button" id="obtener-alimentos" class="btn btn-primary mt-2">Obtener alimentos</button> -->
                             </div>
                             <div class="form-group">
+                                <input type="number" id="tiempo_empleado" class="form-control" placeholder="Introduce el tiempo">
                                 <button type="button" id="añadir-ejercicio" class="btn btn-primary mt-2">Añadir</button>
-                            </div>
-                            <div class="form-group">
-                                <input type="number" id="nuevas-calorias-quemadas" class="form-control" placeholder="Introduce el tiempo">
-                                <button type="button" id="agregar-calorias-quemadas" class="btn btn-primary">Añadir</button>
                             </div>
                         
                         </div>
@@ -217,6 +214,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         const inputConsumidas = document.getElementById('nuevas-calorias-consumidas');
         const inputQuemadas = document.getElementById('nuevas-calorias-quemadas');
+        const inputTiempo = document.getElementById('tiempo_empleado');
         const botonConsumidas = document.getElementById('agregar-calorias-consumidas');
         const botonQuemadas = document.getElementById('agregar-calorias-quemadas');
         const totalCaloriasElement = document.getElementById('total-calorias');
@@ -275,7 +273,10 @@
         console.log("Option seleccionado:", selectedOption);
         const calorias = parseFloat(selectedOption.value) || 0;
         console.log("Calorias seleccionadas:", calorias);
-        actualizarCaloriasEnBD(1, calorias);
+        const tiempo = parseFloat(inputTiempo.value) || 0;
+        console.log("Calorias seleccionadas:", tiempo);
+        const caloriasXtiempo = tiempo*calorias;
+        actualizarCaloriasEnBD(1, caloriasXtiempo);
         obtenerTotalCalorias();
     });
 
