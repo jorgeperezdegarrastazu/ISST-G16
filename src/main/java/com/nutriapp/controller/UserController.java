@@ -35,7 +35,7 @@ public class UserController {
     String action = request.getParameter("action");
     
         if ("register".equals(action)) {
-            return registerUser(request);
+            return registerUser(request, session);
         } else if ("login".equals(action)) {
             return loginUser(request, session);
         }
@@ -44,7 +44,7 @@ public class UserController {
 
     
 
-    private String registerUser(HttpServletRequest request) {
+    private String registerUser(HttpServletRequest request, HttpSession session) {
         // Lógica para manejar la solicitud de registro
         String nombre = request.getParameter("nombre");
         String username = request.getParameter("username");
@@ -79,7 +79,9 @@ public class UserController {
     
         // Redirigir al usuario a la página de inicio de sesión
         //return "redirect:/index_usuario/" + user.getId();
-        return "redirect:/index_usuario";
+        //return "redirect:/index_usuario";
+        session.setAttribute("id", user.getId());
+        return "redirect:/index_usuario/" + user.getId();
     }
 
 private String loginUser(HttpServletRequest request, HttpSession session) {
