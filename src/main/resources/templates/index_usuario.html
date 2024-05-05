@@ -204,6 +204,7 @@
         <div class="col">
             <h1 class="h2 text-success">Total de calorías:</h1>
             <p class="h2 text-success"  id="total-calorias"><strong>0</strong></p>
+            <button type="button" id="reseteo-calorias" class="btn btn-primary mt-2">Resetear calorías</button>
         </div>
     </div>
 </div>
@@ -224,6 +225,7 @@
         const selectDeportes = document.getElementById('ejercicios_quemados');
         const añadirEjercicio = document.getElementById('añadir-ejercicio');
         const añadirAlimento = document.getElementById('añadir-alimento');
+        const reseteoCalorias = document.getElementById('reseteo-calorias');
 
 
         let totalCalorias = 0;
@@ -312,6 +314,11 @@
             .catch(error => console.error('Error al cargar deportes:', error));
     }
 
+    // Función para sumar las calorías consumidas al total
+    function reseteoCal() {
+            reseteoCaloriasTotales();
+    }
+
     
 
     // Llamar a las funciones para cargar alimentos y deportes cuando se carga la página
@@ -343,8 +350,7 @@
              .catch(error => console.error('Error al enviar la solicitud al servidor:', error));
          }
 
-         function obtenerTotalCalorias() {
-        // Reemplaza 'url' con la URL de tu endpoint en el backend para obtener el total de calorías
+        function obtenerTotalCalorias() {
         const url = '/calorias';
         fetch(url)
             .then(response => response.json())
@@ -357,6 +363,19 @@
             .catch(error => console.error('Error al obtener el total de calorías:', error));
         }
 
+        function reseteoCaloriasTotales() {
+        const url = '/reseteo_calorias';
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                totalCalorias = 0;
+                totalCaloriasConsumidas = 0;
+                totalCaloriasQuemadas = 0;
+                actualizarTotales();
+            })
+            .catch(error => console.error('Error al obtener el total de calorías:', error));
+        }
+
     // Llamar a la función para obtener el total de calorías al cargar la página
     obtenerTotalCalorias();
 
@@ -364,6 +383,7 @@
         // Agregar eventos de clic a los botones "Añadir"
         botonConsumidas.addEventListener('click', sumarCaloriasConsumidas);
         botonQuemadas.addEventListener('click', restarCaloriasQuemadas);
+        reseteoCalorias.addEventListener('click', reseteoCal)
 
 
     });

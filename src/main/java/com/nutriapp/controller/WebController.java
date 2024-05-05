@@ -243,6 +243,33 @@ public ResponseEntity<?> obtenerCaloriasUsuario(HttpSession session) {
     }
 }
 
+@GetMapping("/reseteo_calorias")
+    public ResponseEntity<?> reseteoCaloriasUsuario(HttpSession session) {
+        Long userId = (Long) session.getAttribute("id");
+        if (userId != null) {
+            User user = userService.getUserById(userId);
+            // Obtener los datos de calorías del usuario
+            int totalCaloriasConsumidas = user.getCaloriasConsumidas();
+            int totalCaloriasQuemadas = user.getCaloriasQuemadas();
+            int totalCalorias = totalCaloriasConsumidas - totalCaloriasQuemadas;
+
+            // Resetear las calorías del usuario
+            user.setCaloriasConsumidas(0);
+            user.setCaloriasQuemadas(0);
+            userRepository.save(user);
+
+            // Construir el objeto JSON de respuesta con los datos reseteados
+            Map<String, Integer> caloriasData = new HashMap<>();
+            caloriasData.put("totalCaloriasConsumidas", 0);
+            caloriasData.put("totalCaloriasQuemadas", 0);
+            caloriasData.put("totalCalorias", 0);
+
+            return ResponseEntity.ok(caloriasData);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+}
+
 
     
 }
