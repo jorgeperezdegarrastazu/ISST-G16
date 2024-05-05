@@ -1,18 +1,30 @@
 {
     "registrate": "//*[@id='templatemo_main_nav']/div[2]/a/span/strong",
-    "login_box": "//*[@id='login-form']/input[1]",
-    "password_box": "//*[@id='login-form']/input[2]",
-    "nombre": "//*[@id='register-form']/input[1]",
-    "surname":"//*[@id='register-form']/input[2]",
-    "peso":"//*[@id='register-form']/input[3]",
-    "altura": "//*[@id='register-form']/input[4]",
-    "edad": "//*[@id='register-form']/input[5]",
-    "mail": "//*[@id='register-form']/input[6]",
-    "username":"//*[@id='register-form']/input[7]",
-    "password":"//*[@id='register-form']/input[8]",
+    "caja_nombre": "//*[@id='register-form']/input[2]",
+    "caja_peso": "//*[@id='register-form']/input[3]",
+    "caja_altura": "//*[@id='register-form']/input[4]",
+    "caja_edad": "//*[@id='register-form']/input[5]",
+    "caja_mail": "//*[@id='register-form']/input[6]",
+    "caja_user": "//*[@id='register-form']/input[7]",
+    "caja_password": "//*[@id='register-form']/input[8]",
+    "registrarse": "//*[@id='register-form']/button",
+    "pagina_siguiente": "/html/body/a[2]",
+
+
+
+    "caja_user_login": "//*[@id='login-form']/input[2]",
+    "caja_password_login": "//*[@id='login-form']/input[3]",
+    "login": "//*[@id='login-form']/button",
     "caloriasconsumidas": "//*[@id='nuevas-calorias-consumidas']",
     "añadir": "//*[@id='agregar-calorias-consumidas']",
+    "selector_comida": "/html/body/div[2]/div/div[2]/div/div/div[2]/div/div[2]/select",
+    "añadir2": "//*[@id='añadir-ejercicio']",
     "caloriasquemadas": "//*[@id='nuevas-calorias-quemadas']",
-    "añadir1":"//*[@id='agregar-calorias-quemadas']"
+    "añadir1":"//*[@id='agregar-calorias-quemadas']",
+    "selector_ejercicio": "//*[@id='ejercicios_quemados']",
+    "caja_tiempo": "//*[@id='tiempo_empleado']",
+    "añadir3": "//*[@id='añadir-alimento']",
+    "resetear": "//*[@id='reseteo-calorias']"
+
 
 }

@@ -32,3 +32,37 @@ Feature: pruebas
     Given click on 'index'
     when write on  'caloriasquemadas'
     then click on 'añadir1'
+
+
+    @CasoX
+    Scenario: Introduccion a la página
+    Given click on 'registrate'
+    And write 'madreee' on 'caja_nombre'
+    And write '75' on 'caja_peso'
+    And write '180' on 'caja_altura'
+    And write '24' on 'caja_edad'
+    And write 'madreee@mail.com' on 'caja_mail'
+    And write 'madreee' on 'caja_user'
+    And write 'madree' on 'caja_password'
+    And click on 'registrarse'
+    
+
+
+    @CasoY
+    Scenario: Login más consumidas
+    Given click on 'registrate'
+    And write 'dani' on 'caja_user_login'
+    And write 'dani' on 'caja_password_login'
+    Then click on 'login'
+    When click on 'pagina_siguiente'
+    And write '123' on 'caloriasconsumidas'
+    And click on 'añadir'
+    And select '3' on 'selector_comida'
+    And click on 'añadir2'
+    Then click on 'pagina_siguiente'
+    And write '123' on 'caloriasquemadas'
+    And click on 'añadir1'
+    And select '4' on 'selector_ejercicio'
+    And write '130' on 'caja_tiempo'
+    And click on 'añadir3'
+    And click on 'resetear'
