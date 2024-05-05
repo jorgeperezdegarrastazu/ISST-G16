@@ -222,6 +222,11 @@
         const totalCaloriasElement = document.getElementById('total-calorias');
         const totalCaloriasConsumidasElement = document.getElementById('total-calorias-consumidas');
         const totalCaloriasQuemadasElement = document.getElementById('total-calorias-quemadas');
+        const selectAlimentos = document.getElementById('alimentos_consumidos');
+        const selectDeportes = document.getElementById('ejercicios_quemados');
+        const añadirEjercicio = document.getElementById('añadir-ejercicio');
+        const añadirAlimento = document.getElementById('añadir-alimento');
+
 
         let totalCalorias = 0;
         let totalCaloriasConsumidas = 0;
@@ -251,6 +256,66 @@
             actualizarTotales();
             actualizarCaloriasEnBD(1, caloriasQuemadas);
         }
+
+
+         // Agregar eventos de clic a los botones de "Añadir"
+    añadirAlimento.addEventListener('click', function () {
+        console.log("Botón de añadir alimento clickeado");
+        const selectedOption = selectAlimentos.options[selectAlimentos.selectedIndex];
+        console.log("Option seleccionado:", selectedOption);
+        const calorias = parseFloat(selectedOption.value) || 0;
+        console.log("Calorias seleccionadas:", calorias);
+        actualizarCaloriasEnBD(0, calorias);
+        obtenerTotalCalorias();
+    });
+
+    añadirEjercicio.addEventListener('click', function () {
+        console.log("Botón de añadir ejercicio clickeado");
+        const selectedOption = selectDeportes.options[selectDeportes.selectedIndex];
+        console.log("Option seleccionado:", selectedOption);
+        const calorias = parseFloat(selectedOption.value) || 0;
+        console.log("Calorias seleccionadas:", calorias);
+        actualizarCaloriasEnBD(1, calorias);
+        obtenerTotalCalorias();
+    });
+
+    // Función para cargar los datos de recipes.json y agregar las opciones al selector de comidas
+    function cargarAlimentos() {
+        fetch('/recipes.json')
+            .then(response => response.json())
+            .then(data => {
+                selectAlimentos.innerHTML = '';
+                data.forEach(recipe => {
+                    const option = document.createElement('option');
+                    option.textContent = `${recipe.Name} - ${recipe.caloriesC} calorías`;
+                    option.value = recipe.caloriesC; // Ajustamos para que el valor sea las calorías
+                    selectAlimentos.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error al cargar alimentos:', error));
+    }
+
+    // Función para cargar los datos de sports.json y agregar las opciones al selector de ejercicios
+    function cargarDeportes() {
+        fetch('/sports.json')
+            .then(response => response.json())
+            .then(data => {
+                selectDeportes.innerHTML = '';
+                data.forEach(sport => {
+                    const option = document.createElement('option');
+                    option.textContent = `${sport.Name} - ${sport.caloriesQ} calorías`;
+                    option.value = sport.caloriesQ; // Ajustamos para que el valor sea negativo de las calorías
+                    selectDeportes.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error al cargar deportes:', error));
+    }
+
+    
+
+    // Llamar a las funciones para cargar alimentos y deportes cuando se carga la página
+    cargarAlimentos();
+    cargarDeportes();
 
          // Función para enviar la solicitud al servidor para actualizar las calorías en la base de datos
          function actualizarCaloriasEnBD(tipo, cantidad) {
@@ -289,7 +354,7 @@
                 actualizarTotales();
             })
             .catch(error => console.error('Error al obtener el total de calorías:', error));
-    }
+        }
 
     // Llamar a la función para obtener el total de calorías al cargar la página
     obtenerTotalCalorias();
@@ -298,65 +363,15 @@
         // Agregar eventos de clic a los botones "Añadir"
         botonConsumidas.addEventListener('click', sumarCaloriasConsumidas);
         botonQuemadas.addEventListener('click', restarCaloriasQuemadas);
+
+
     });
+
+
+
+   
 </script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const selectAlimentos = document.getElementById('alimentos_consumidos');
-        const selectDeportes = document.getElementById('ejercicios_quemados');
-        const añadirEjercicio = document.getElementById('añadir-ejercicio');
-        const añadirAlimento = document.getElementById('añadir-alimento');
-        // Función para cargar los datos de recipes.json y agregar las opciones al selector de comidas
-        function cargarAlimentos() {
-            fetch('/recipes.json')
-                .then(response => response.json())
-                .then(data => {
-                    selectAlimentos.innerHTML = '';
-                    data.forEach(recipe => {
-                        const option = document.createElement('option');
-                        option.textContent = `${recipe.Name} - ${recipe.caloriesC} calorías`;
-                        option.value = recipe.caloriesC; // Ajustamos para que el valor sea las calorías
-                        selectAlimentos.appendChild(option);
-                    });
-                })
-                .catch(error => console.error('Error al cargar alimentos:', error));
-        }
 
-        // Función para cargar los datos de sports.json y agregar las opciones al selector de ejercicios
-        function cargarDeportes() {
-            fetch('/sports.json')
-                .then(response => response.json())
-                .then(data => {
-                    selectDeportes.innerHTML = '';
-                    data.forEach(sport => {
-                        const option = document.createElement('option');
-                        option.textContent = `${sport.Name} - ${sport.caloriesQ} calorías`;
-                        option.value = sport.caloriesQ; // Ajustamos para que el valor sea negativo de las calorías
-                        selectDeportes.appendChild(option);
-                    });
-                })
-                .catch(error => console.error('Error al cargar deportes:', error));
-        }
-
-        // Llamar a las funciones para cargar alimentos y deportes cuando se carga la página
-        cargarAlimentos();
-        cargarDeportes();
-
-
-        // Agregar eventos de cambio a los selectores y botones de "Añadir"
-        añadirAlimento.addEventListener('click', function () {
-            const selectedOption = this.selectedOptions[0];
-            const calorias = parseFloat(selectedOption.value) || 0;
-            actualizarCaloriasEnBD(0, calorias);
-        });
-
-        añadirEjercicio.addEventListener('click', function () {
-            const selectedOption = this.selectedOptions[0];
-            const calorias = parseFloat(selectedOption.value) || 0;
-            actualizarCaloriasEnBD(1, calorias);
-        });
-    });
-</script>
 
 
 
