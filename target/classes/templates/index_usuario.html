@@ -46,6 +46,7 @@
 
 
 
+
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
@@ -139,8 +140,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="alimentos">Selecciona un alimento:</label>
-                                <select id="alimentos" class="form-control"></select>
+                                <select id="alimentos_consumidos" class="form-control"></select>
+                                <script>
+                                    cargarAlimentos();
+                                </script>
                                 <!-- <button type="button" id="obtener-alimentos" class="btn btn-primary mt-2">Obtener alimentos</button> -->
+                            </div>
+                            <div class="form-group">
+                                <button type="button" id="añadir-alimento" class="btn btn-primary mt-2">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -165,13 +172,20 @@
                             </div>
                             <div class="form-group">
                                 <label for="sports">Selecciona un ejercicio:</label>
-                                <select id="sports" class="form-control"></select>
+                                <select id="ejercicios_quemados" class="form-control"></select>
+                                <script>
+                                    cargarDeportes();
+                                </script>
                                 <!-- <button type="button" id="obtener-alimentos" class="btn btn-primary mt-2">Obtener alimentos</button> -->
+                            </div>
+                            <div class="form-group">
+                                <button type="button" id="añadir-ejercicio" class="btn btn-primary mt-2">Añadir</button>
                             </div>
                             <div class="form-group">
                                 <input type="number" id="nuevas-calorias-quemadas" class="form-control" placeholder="Introduce el tiempo">
                                 <button type="button" id="agregar-calorias-quemadas" class="btn btn-primary">Añadir</button>
                             </div>
+                        
                         </div>
                     </div>
                 </div>
@@ -263,7 +277,24 @@
              .catch(error => console.error('Error al enviar la solicitud al servidor:', error));
          }
 
+         function obtenerTotalCalorias() {
+        // Reemplaza 'url' con la URL de tu endpoint en el backend para obtener el total de calorías
+        const url = '/calorias';
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                totalCalorias = data.totalCalorias;
+                totalCaloriasConsumidas = data.totalCaloriasConsumidas;
+                totalCaloriasQuemadas = data.totalCaloriasQuemadas;
+                actualizarTotales();
+            })
+            .catch(error => console.error('Error al obtener el total de calorías:', error));
+    }
 
+    // Llamar a la función para obtener el total de calorías al cargar la página
+    obtenerTotalCalorias();
+
+         //actualizarTotales();
         // Agregar eventos de clic a los botones "Añadir"
         botonConsumidas.addEventListener('click', sumarCaloriasConsumidas);
         botonQuemadas.addEventListener('click', restarCaloriasQuemadas);
@@ -271,57 +302,59 @@
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const selectAlimentos = document.getElementById('alimentos');
-
-        // Función para cargar los datos del archivo recipes.json y agregar las opciones al selector
+        const selectAlimentos = document.getElementById('alimentos_consumidos');
+        const selectDeportes = document.getElementById('ejercicios_quemados');
+        const añadirEjercicio = document.getElementById('añadir-ejercicio');
+        const añadirAlimento = document.getElementById('añadir-alimento');
+        // Función para cargar los datos de recipes.json y agregar las opciones al selector de comidas
         function cargarAlimentos() {
-            fetch('./ISST-G16/assets/recipes.json')
+            fetch('/recipes.json')
                 .then(response => response.json())
                 .then(data => {
-                    // Limpiar opciones anteriores
                     selectAlimentos.innerHTML = '';
-
-                    // Iterar sobre los datos y agregar cada nombre de alimento como opción en el selector
-                    data.forEach(alimento => {
+                    data.forEach(recipe => {
                         const option = document.createElement('option');
-                        option.textContent = alimento.Name;
-                        option.value = alimento.Name; // Puedes ajustar esto según la estructura de datos de recipes.json
+                        option.textContent = `${recipe.Name} - ${recipe.caloriesC} calorías`;
+                        option.value = recipe.caloriesC; // Ajustamos para que el valor sea las calorías
                         selectAlimentos.appendChild(option);
                     });
                 })
                 .catch(error => console.error('Error al cargar alimentos:', error));
         }
 
-        // Llamar a la función para cargar alimentos cuando se carga la página
-        cargarAlimentos();
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const selectDeportes = document.getElementById('sports');
-
-        // Función para cargar los datos de recipes.json y agregar las opciones al selector
+        // Función para cargar los datos de sports.json y agregar las opciones al selector de ejercicios
         function cargarDeportes() {
-            fetch('./ISST-G16/assets/sports.json')
+            fetch('/sports.json')
                 .then(response => response.json())
                 .then(data => {
-                    // Limpiar opciones anteriores
                     selectDeportes.innerHTML = '';
-
-                    // Iterar sobre los datos y agregar cada nombre de receta como opción en el selector
                     data.forEach(sport => {
                         const option = document.createElement('option');
-                        option.textContent = sport.Name;
-                        option.value = sport.Name; 
+                        option.textContent = `${sport.Name} - ${sport.caloriesQ} calorías`;
+                        option.value = sport.caloriesQ; // Ajustamos para que el valor sea negativo de las calorías
                         selectDeportes.appendChild(option);
                     });
                 })
                 .catch(error => console.error('Error al cargar deportes:', error));
         }
 
-        // Llamar a la función para cargar alimentos cuando se carga la página
+        // Llamar a las funciones para cargar alimentos y deportes cuando se carga la página
+        cargarAlimentos();
         cargarDeportes();
+
+
+        // Agregar eventos de cambio a los selectores y botones de "Añadir"
+        añadirAlimento.addEventListener('click', function () {
+            const selectedOption = this.selectedOptions[0];
+            const calorias = parseFloat(selectedOption.value) || 0;
+            actualizarCaloriasEnBD(0, calorias);
+        });
+
+        añadirEjercicio.addEventListener('click', function () {
+            const selectedOption = this.selectedOptions[0];
+            const calorias = parseFloat(selectedOption.value) || 0;
+            actualizarCaloriasEnBD(1, calorias);
+        });
     });
 </script>
 
